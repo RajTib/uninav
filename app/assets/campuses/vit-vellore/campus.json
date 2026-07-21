@@ -1,0 +1,80 @@
+{
+  "id": "vit-vellore",
+  "name": "VIT Vellore",
+  "type": "university",
+  "buildings": [
+    {
+      "id": "SJT",
+      "name": "Silver Jubilee Tower",
+      "code": "SJT",
+      "aliases": ["Silver Jubilee", "Tower"],
+      "status": "inProgress",
+      "note": "First building being mapped"
+    },
+    {
+      "id": "TT",
+      "name": "Technology Tower",
+      "code": "TT",
+      "aliases": ["Tech Tower"],
+      "status": "planned"
+    },
+    {
+      "id": "TT-ANNEX",
+      "name": "Technology Tower Annexe",
+      "code": "TT Annex",
+      "aliases": ["TT Annexe"],
+      "status": "planned",
+      "note": "Small annexe adjoining TT"
+    },
+    {
+      "id": "MB",
+      "name": "Main Building",
+      "code": "MB",
+      "aliases": ["Main Block"],
+      "status": "planned"
+    },
+    {
+      "id": "SMV",
+      "name": "Sri M Vishweshwaraiah Block",
+      "code": "SMV",
+      "aliases": ["Vishweshwaraiah"],
+      "status": "planned"
+    },
+    {
+      "id": "PRP",
+      "name": "Pearl Research Park",
+      "code": "PRP",
+      "aliases": ["Pearl"],
+      "status": "planned"
+    },
+    {
+      "id": "PRP-ANNEX",
+      "name": "Pearl Research Park Annexe",
+      "code": "PRP Annex",
+      "aliases": ["PRP Annexe"],
+      "status": "planned",
+      "note": "Small annexe adjoining PRP"
+    },
+    {
+      "id": "GDN",
+      "name": "GD Naidu Block",
+      "code": "GDN",
+      "aliases": ["G D Naidu", "Naidu"],
+      "status": "planned"
+    },
+    {
+      "id": "CDMM",
+      "name": "Centre for Disaster Management and Mitigation",
+      "code": "CDMM",
+      "aliases": ["Disaster Management"],
+      "status": "planned"
+    },
+    {
+      "id": "MG",
+      "name": "Mahatma Gandhi Block",
+      "code": "MG",
+      "aliases": ["Gandhi Block"],
+      "status": "planned"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------------------
+# Institutional floor plans — NEVER commit these.
+# VIT-provided drawings are held under a commitment that they will not be
+# published or redistributed. Only the derived room/corridor coordinates in
+# app/assets/campuses/** may be committed. Git history is very hard to scrub,
+# so keep these out in the first place.
+# ---------------------------------------------------------------------------
+plans/
+floorplans/
+*.dwg
+*.dxf
+*.rvt
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Flutter/Dart build output lives under app/, and app/.gitignore covers it,
+# but repeat the big ones here so a stray build directory anywhere is ignored.
+build/
+.dart_tool/

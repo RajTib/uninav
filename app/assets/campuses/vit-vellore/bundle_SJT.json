@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "buildingId": "SJT",
+  "buildingName": "Silver Jubilee Tower",
+  "version": 0,
+  "floors": [
+    {
+      "id": "f0",
+      "level": 0,
+      "name": "Ground Floor",
+      "widthM": 70,
+      "heightM": 40
+    }
+  ],
+  "rooms": [
+    {
+      "id": "SJT_PLACEHOLDER",
+      "floorId": "f0",
+      "name": "Not surveyed yet",
+      "type": "other",
+      "aliases": [],
+      "polygon": [[20, 14], [50, 14], [50, 26], [20, 26]],
+      "labelPoint": [35, 20],
+      "nodeId": "n_placeholder",
+      "tags": {"note": "Replace this file by running the survey tool"},
+      "wheelchairAccessible": true
+    }
+  ],
+  "pois": [],
+  "nodes": [
+    {"id": "n_entrance", "floorId": "f0", "x": 35, "y": 36, "kind": "entrance"},
+    {"id": "n_placeholder", "floorId": "f0", "x": 35, "y": 20, "kind": "room"}
+  ],
+  "edges": [
+    {
+      "a": "n_entrance",
+      "b": "n_placeholder",
+      "kind": "corridor",
+      "lengthM": 16,
+      "accessible": true,
+      "bidirectional": true
+    }
+  ]
+}

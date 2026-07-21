@@ -1,0 +1,108 @@
+rules_version = '2';
+// UniNav Firestore rules v1 (deployed in Milestone 5; kept in-repo from day
+// one so the security model evolves with the data model). See
+// docs/12-security.md for the threat analysis behind each rule.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() { return request.auth != null; }
+    function isVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+    function roleDoc() {
+      return get(/databases/$(database)/documents/roles/$(request.auth.uid));
+    }
+    function hasRole() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/roles/$(request.auth.uid));
+    }
+    function isAdmin() { return hasRole() && roleDoc().data.role == 'admin'; }
+    function isModeratorFor(campusId) {
+      return hasRole()
+        && roleDoc().data.role in ['admin', 'moderator']
+        && campusId in roleDoc().data.campusIds;
+    }
+
+    // Published map metadata: public read, staff-only write.
+    match /campuses/{campusId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /buildings/{buildingId} {
+      allow read: if true;
+      allow write: if isAdmin()
+        || (isSignedIn() && isModeratorFor(resource.data.campusId));
+      match /versions/{version} {
+        allow read: if true;
+        allow create: if isAdmin()
+          || isModeratorFor(get(/databases/$(database)/documents/buildings/$(buildingId)).data.campusId);
+        allow update, delete: if false; // versions are immutable
+      }
+    }
+    match /announcements/{id} {
+      allow read: if true;
+      allow write: if isAdmin()
+        || (isSignedIn() && isModeratorFor(request.resource.data.campusId));
+    }
+
+    // Roles: readable by their subject, writable only by admins.
+    // Kept separate from user profiles so privilege escalation via profile
+    // writes is structurally impossible.
+    match /roles/{uid} {
+      allow read: if isSignedIn() && request.auth.uid == uid;
+      allow write: if isAdmin();
+    }
+
+    // User-owned data. Reputation fields are server/moderation-managed.
+    match /users/{uid} {
+      allow read: if isSignedIn() && request.auth.uid == uid;
+      allow create: if isSignedIn() && request.auth.uid == uid
+        && request.resource.data.reputation == 0
+        && request.resource.data.contributionCount == 0;
+      allow update: if isSignedIn() && request.auth.uid == uid
+        && request.resource.data.reputation == resource.data.reputation
+        && request.resource.data.contributionCount
+             == resource.data.contributionCount;
+      match /saved/{id} {
+        allow read, write: if isSignedIn() && request.auth.uid == uid;
+      }
+      match /routeHistory/{id} {
+        allow read, write: if isSignedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // Contributions: verified users create pending items; only moderators
+    // change status. Authors may cancel while pending.
+    match /contributions/{id} {
+      allow create: if isVerified()
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.note.size() < 1000;
+      allow read: if isSignedIn()
+        && (resource.data.authorId == request.auth.uid
+            || isModeratorFor(resource.data.campusId));
+      allow update: if isSignedIn()
+        && (
+          isModeratorFor(resource.data.campusId)
+          || (resource.data.authorId == request.auth.uid
+              && resource.data.status == 'pending'
+              && request.resource.data.status == 'cancelled')
+        );
+      allow delete: if false; // audit trail is permanent
+    }
+
+    match /feedback/{id} {
+      allow create: if isSignedIn()
+        && request.resource.data.authorId == request.auth.uid;
+      allow read, update: if isSignedIn()
+        && isModeratorFor(resource.data.campusId);
+      allow delete: if false;
+    }
+
+    match /auditLogs/{id} {
+      allow create: if isSignedIn() && hasRole();
+      allow read: if isAdmin();
+      allow update, delete: if false; // append-only
+    }
+  }
+}

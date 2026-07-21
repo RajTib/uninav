@@ -1,0 +1,19 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+# NOTE: pubspec.lock is deliberately committed — this is an app, and locked
+# dependency versions make builds reproducible.
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Firebase local config (never commit real keys)
+**/google-services.json
+**/GoogleService-Info.plist
+lib/firebase_options.dart
+.firebase/

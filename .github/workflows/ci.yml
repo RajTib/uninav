@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+
+      # No version pin: the app targets `flutter: ">=3.22.0"` (see
+      # app/pubspec.yaml) and stays on whatever the stable channel currently
+      # ships, so CI tracks the same Flutter a solo dev's `flutter upgrade`
+      # would give them instead of drifting from a stale pinned version.
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - run: flutter analyze
+
+      - run: flutter test

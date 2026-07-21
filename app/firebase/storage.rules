@@ -1,0 +1,32 @@
+rules_version = '2';
+// Published bundles/plans are public and immutable-by-convention; contributor
+// photos stay private until their contribution is approved
+// (docs/12-security.md).
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isSignedIn() { return request.auth != null; }
+    function isStaff() {
+      return isSignedIn()
+        && firestore.exists(/databases/(default)/documents/roles/$(request.auth.uid));
+    }
+
+    match /bundles/{buildingId}/{version} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+    match /plans/{buildingId}/{file} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+    match /contrib/{contributionId}/{file} {
+      // Author uploads while the contribution is pending; only staff read
+      // before approval (unmoderated images must never be publicly served).
+      allow write: if isSignedIn()
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*')
+        && firestore.get(/databases/(default)/documents/contributions/$(contributionId)).data.authorId
+             == request.auth.uid;
+      allow read: if isStaff();
+    }
+  }
+}

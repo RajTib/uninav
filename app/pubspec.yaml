@@ -1,0 +1,33 @@
+name: uninav
+description: "UniNav — data-driven indoor navigation platform. Venue knowledge lives in data, never in code."
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+# Milestone 1 deliberately has NO Firebase dependencies.
+# The data layer runs on a bundled-asset data source; Firebase plugs into the
+# same repository interfaces in Milestone 5 (see docs/14-roadmap.md).
+dependencies:
+  collection: ^1.18.0
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  go_router: ^14.2.0
+  meta: ^1.12.0
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    # Whole-directory entries so a newly generated bundle_<ID>.json is picked
+    # up without editing pubspec every time a building gets mapped.
+    - assets/campuses/vit-vellore/
+    - assets/campuses/demo/

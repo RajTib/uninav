@@ -1,0 +1,22 @@
+{
+  "id": "demo",
+  "name": "Demo Campus",
+  "type": "university",
+  "buildings": [
+    {
+      "id": "main",
+      "name": "Main Block",
+      "code": "MB",
+      "aliases": ["Main"],
+      "status": "mapped"
+    },
+    {
+      "id": "annex",
+      "name": "Demo Annexe",
+      "code": "ANX",
+      "aliases": [],
+      "status": "planned",
+      "note": "Exists to exercise the unmapped-building UI"
+    }
+  ]
+}

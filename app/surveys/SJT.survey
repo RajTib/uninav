@@ -1,0 +1,63 @@
+# SJT — Silver Jubilee Tower survey
+#
+# This file is what you fill in from your paper notes. Run:
+#   dart run tool/survey/survey_to_bundle.dart surveys/SJT.survey
+# to generate assets/campuses/vit-vellore/bundle_SJT.json
+#
+# FORMAT (one statement per line, '#' starts a comment):
+#   building <ID> "<Full name>" [alias=A,B]
+#   floor <floorId> level=<int> "<Floor name>"
+#   corridor <corridorId> length=<metres> [heading=E|W|N|S] [start=<x>,<y>]
+#   corridor <corridorId> from=<x>,<y> to=<x>,<y>      (explicit alternative)
+#   room <distance> <L|R> <roomId> "<Name>" <type> [alias=A,B] [tag:k=v]
+#   poi  <distance> <L|R> <type> [id=<poiId>] ["<Name>"]
+#   stair <distance> <L|R> <sharedId>
+#   lift  <distance> <L|R> <sharedId>
+#   entrance <distance> <L|R> <id>
+#   link <corridorIdA> <distance> <corridorIdB> <distance>
+#
+# NOTES
+# - Coordinates are metres in a floor-local frame; x grows right, y grows down.
+# - <distance> is metres measured ALONG the corridor from its 'from' point.
+#   Pace it: ~0.75 m per adult pace, so 40 paces ≈ 30 m. Round to the metre.
+# - L / R is the side as you walk from 'from' towards 'to'.
+# - stair/lift <sharedId> MUST match across floors — that is what connects
+#   them vertically. Use the same id (e.g. st_north) on every floor it serves.
+# - Room ids must be unique within the building.
+# - Room types: classroom lab office auditorium library washroom cafeteria
+#   utility other
+# - POI types: washroom waterCooler printer atm vending firstAid entrance
+#   exit other
+
+building SJT "Silver Jubilee Tower" alias=SJT,Silver Jubilee,Tower
+
+# ---------------------------------------------------------------------------
+# GROUND FLOOR — replace everything below with your real survey
+# ---------------------------------------------------------------------------
+floor f0 level=0 "Ground Floor"
+
+# A single straight corridor 60 m long. Just give the length you paced —
+# coordinates are computed for you. If your floor is an L or a loop, declare
+# several corridors and join them with 'link'.
+corridor c_main length=60 heading=E
+
+entrance 0 L e_main
+room 8 L SJT101 "SJT 101" classroom alias=101
+room 8 R SJT102 "SJT 102" classroom alias=102
+poi 15 R washroom
+stair 30 R st_main
+lift 34 R lift_main
+room 45 L SJT103 "SJT 103" lab alias=103 tag:dept=Physics
+
+# ---------------------------------------------------------------------------
+# FIRST FLOOR
+# ---------------------------------------------------------------------------
+floor f1 level=1 "First Floor"
+
+corridor c_main length=60 heading=E
+
+# Same shared ids as the ground floor -> vertical connections are created.
+stair 30 R st_main
+lift 34 R lift_main
+room 8 L SJT201 "SJT 201" classroom alias=201
+room 45 L SJT202 "SJT 202" office alias=202 tag:person=TBD
