@@ -22,7 +22,17 @@ final class AssetBuildingRepository implements BuildingRepository {
   }) : _loader = loader;
 
   /// The campus shipped in the APK. Multi-campus selection arrives with M5.
-  static const defaultCampusId = 'vit-vellore';
+  ///
+  /// Overridable at build time so the fully-populated demo campus can be run
+  /// without editing code — useful for showing the feature set while real
+  /// buildings are still being surveyed:
+  ///
+  ///   flutter run --dart-define=CAMPUS=demo
+  ///
+  /// Defaults to the real campus, so a normal `flutter run` or release build
+  /// is never accidentally shipped with demo data.
+  static const defaultCampusId =
+      String.fromEnvironment('CAMPUS', defaultValue: 'vit-vellore');
 
   final StringLoader _loader;
   final String campusId;

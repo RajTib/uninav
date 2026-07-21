@@ -17,3 +17,5 @@ build/
 **/GoogleService-Info.plist
 lib/firebase_options.dart
 .firebase/
+
+*.png

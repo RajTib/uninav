@@ -5,7 +5,8 @@ plugins {
 }
 
 android {
-    namespace = "com.example.uninav"
+    // Where the Kotlin/Java sources live. Internal only — users never see it.
+    namespace = "com.rajtibarewala.uninav"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -15,8 +16,12 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.uninav"
+        // PERMANENT app identity on Android. Once published to the Play Store
+        // this can never be changed — a different applicationId is treated as
+        // a different app, and existing users stop receiving updates.
+        // ("com.example.*" is Google's reserved placeholder and is rejected
+        // by the Play Store, which is why the template default had to go.)
+        applicationId = "com.rajtibarewala.uninav"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
