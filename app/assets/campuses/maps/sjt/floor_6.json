@@ -297,7 +297,7 @@
         },
         {
             "id": "SJT608",
-            "kind": "classroom",
+            "kind": "toilet_male",
             "displayName": "Men's Washroom",
             "aliases": [
                 "608",
@@ -384,7 +384,7 @@
         },
         {
             "id": "SJT618",
-            "kind": "classroom",
+            "kind": "toilet_female",
             "displayName": "Women's Washroom",
             "aliases": [
                 "618",

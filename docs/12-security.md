@@ -1,4 +1,29 @@
-# UniNav — Security (v1.0)
+# UniNav — Security
+
+> ## ⚠ Status: rules written, never deployed, never tested
+>
+> **The app has no backend, no authentication and no network access.** It reads bundled assets and writes to local key-value storage. The current attack surface is a device the user already controls.
+>
+> **What exists:** complete Firestore and Storage rules at `app/firebase/firestore.rules` and `app/firebase/storage.rules`, kept in-repo from the start so the security model evolves alongside the data model instead of being retrofitted. They have **never been deployed and never been run against the emulator suite.** Treat them as a reviewed design, not as tested code.
+>
+> **What this means practically:**
+>
+> | Concern | Current reality |
+> |---|---|
+> | Authentication | None — no accounts exist |
+> | Authorisation | Not applicable — nothing is writable remotely |
+> | Data at rest | Bundled assets, world-readable by design |
+> | User data | `shared_preferences`, device-local, not encrypted |
+> | Secrets | **None in the repo** — verified; there is no Firebase config to leak |
+> | Network | The app makes no network calls |
+>
+> **Before any deployment:** the rules must be run against the Firebase emulator suite with a test matrix covering each role and each collection. Deploying untested rules is how privilege-escalation bugs ship.
+>
+> See [14-roadmap.md](14-roadmap.md) and [15-known-issues.md](15-known-issues.md).
+
+Related: [Data model](03-data-model.md) · [Community mapping](06-community-mapping.md) · [Admin dashboard](07-admin-dashboard.md)
+
+---
 
 ## Principles
 1. Roles live in `roles/{uid}` (admin-writable only) — profile writes can never escalate privilege.

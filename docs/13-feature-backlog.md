@@ -1,15 +1,120 @@
-# UniNav — Feature Backlog (100 ideas, v1.0)
+# UniNav — Feature Backlog
 
-## Must Have (MVP–v1) — 15
-1. Room search (number/name/alias) 2. Fuzzy + prefix search 3. Shortest path A* 4. Multi-floor transitions 5. Accessible (no-stairs) routing 6. Floor-plan viewer (pan/zoom/tap) 7. Turn-by-turn step list 8. Offline cached campuses 9. Campus/building browser 10. Favorites 11. Recent searches 12. Report a problem 13. Anonymous browsing 14. Google sign-in 15. Map versioning + auto-update
+> **Status: idea register, not a plan.** Nothing here is committed. The committed work is in [14-roadmap.md](14-roadmap.md); anything not in a roadmap phase is unscheduled by definition.
+>
+> Kept because knowing what was *considered and deferred* is as useful as knowing what was chosen — it prevents re-litigating settled decisions and shows the shape of the problem space.
 
-## Should Have (v1.x) — 25
-16. Community contributions (add/move/rename room) 17. Moderation queue 18. Contributor reputation 19. Photo attachments 20. POI layers: washrooms 21. Water coolers 22. Printers/xerox 23. ATMs/vending 24. Nearest-X routing ("nearest washroom") 25. Prefer-elevator mode 26. Voice guidance (TTS) 27. Saved locations ("my hostel room") 28. Share a location/route as link/QR 29. Announcements per campus 30. Multi-campus support in one install 31. Departments directory 32. Faculty cabin search 33. Building open-hours + closed-route warnings 34. Route preview scrubber 35. Dark mode + high-contrast themes 36. Multi-language (i18n framework) 37. Admin floor editor 38. Bundle import/export 39. Zero-result search analytics 40. In-app "what's new in your campus map"
+Related: [Roadmap](14-roadmap.md) · [SRS](01-srs.md) · [Navigation runtime](18-navigation-runtime.md)
 
-## Nice To Have (v2+) — 35
-41. QR checkpoints for instant "you are here" 42. Timetable import (ics/photo) → "navigate to next class" 43. Class-schedule aware room suggestions ("free room near you") 44. Study-space finder w/ occupancy tags 45. Event mode (fest maps, stalls) 46. Lost & found board (moderated) 47. Food court menus/hours 48. Bus/shuttle stop info 49. Parking spot zones 50. Walking-time estimates per route 51. Calorie/step estimates 52. Route history insights 53. Widgets (next class + route) 54. Wearable glanceable directions 55. Emergency exit route mode 56. Emergency alerts broadcast 57. First-aid/AED locator 58. Gender-specific washroom filter 59. Quiet-route preference (avoid crowds) 60. Elevator outage reports (community, time-boxed) 61. Temporary closures (construction) with reroute 62. Indoor-outdoor stitched routing (campus paths) 63. Cycle stand locator 64. Hostel block support 65. Library shelf-level mapping 66. Exam-hall finder by seat number 67. Club-room directory 68. Printer queue status integration 69. Campus tour mode (curated waypoints for visitors) 70. Freshers' onboarding quest (gamified campus intro) 71. Contribution leaderboards 72. Mapping parties tooling (bulk edit sessions) 73. Offline map sharing device-to-device 74. TV/kiosk mode for building lobbies 75. Deep links from LMS/ERP pages
+---
 
-## Crazy Ideas (research) — 25
-76. AR wayfinding overlay (ARCore/ARKit) 77. BLE beacon live positioning 78. Wi-Fi RTT positioning 79. Dead-reckoning (IMU) between checkpoints 80. Crowd density heatmaps (anonymized) 81. Occupancy prediction ("SJT canteen busy at 1pm") 82. Voice-only navigation agent 83. Camera relocalization ("photo of corridor → position") 84. Smart-glasses directions 85. Indoor drone mapping to auto-generate floor plans 86. Photogrammetry from student videos 87. LLM concierge ("where do I pay hostel fees?" → office + route) 88. Auto-OCR of door nameplates from photos → room suggestions 89. Social meetup pins ("find me") 90. Accessibility crowd-audit (rate every route) 91. Haptic-belt navigation for blind users 92. Multi-modal campus routing (walk + shuttle) 93. Digital-twin API for facilities teams 94. Energy/space analytics for admin (room utilization) 95. Federation protocol between campuses (OSM-style planet file) 96. Open data export (ODbL-style licence) 97. White-label SDK for malls/hospitals 98. In-map ads/sponsored POIs (revenue, carefully) 99. Insurance/evac compliance reports from graph 100. Time-travel maps (see campus as it was in 2020)
+## Delivered
 
-Prioritization rule: nothing from Should+ starts until the Must list is shippable for one full building; nothing hardware-dependent (76–79) before QR checkpoints (41) prove the localization UX.
+Already shipped, with the doc that describes each:
+
+| Feature | Doc |
+|---|---|
+| Room search by number, name and alias | [09](09-search.md) |
+| Fuzzy + prefix search with ranking | [09](09-search.md) |
+| Shortest path via A* | [04](04-routing-engine.md) |
+| Multi-floor transitions | [04](04-routing-engine.md) |
+| Step-free (no-stairs) routing | [04](04-routing-engine.md), [10](10-accessibility.md) |
+| Prefer-lift mode | [04](04-routing-engine.md) |
+| Floor viewer: pan, zoom, tap-to-select | [05](05-map-representation.md) |
+| Turn-by-turn step list | [04](04-routing-engine.md) |
+| Offline operation | [02 §7](02-architecture.md) |
+| Building browser incl. unmapped buildings | [08](08-ui-screens.md) |
+| Favourites and recent searches | [08](08-ui-screens.md) |
+| Report a problem (offline outbox) | [08](08-ui-screens.md) |
+| Anonymous use — there is no account | — |
+| Washroom POIs and **nearest-washroom routing** | [04 §3.4](04-routing-engine.md) |
+| Deep links: `/map?room=`, `/plan?dest=&from=` | [08](08-ui-screens.md) |
+| Dark mode | [05 §7](05-map-representation.md) |
+| Bundle versioning field in the schema | [03](03-data-model.md) |
+
+---
+
+## Next (Phase 1)
+
+Committed. See [14-roadmap.md](14-roadmap.md).
+
+- Complete SJT floors 5, 4, 3, 2, 1, Ground
+- Graph validation in the generator actually in use
+- An `entrance` node and entrance-based default start
+- **Simulated navigation blob** ([18](18-navigation-runtime.md))
+- Travelled-versus-remaining route styling
+
+---
+
+## Deferred — designed, unscheduled
+
+Each has a design document already written. They are deferred on sequencing, not on merit.
+
+| Feature | Design | Blocked on |
+|---|---|---|
+| Community contributions (add / move / rename) | [06](06-community-mapping.md) | A map worth correcting; a backend |
+| Moderation queue and reputation | [06](06-community-mapping.md) | Contributions |
+| Admin floor editor | [07](07-admin-dashboard.md) | The browser tracer suffices at current scale |
+| Bundle import/export with dry-run diff | [07](07-admin-dashboard.md) | Admin tooling |
+| Zero-result search analytics — the mapping-gap detector | [07](07-admin-dashboard.md) | Any telemetry at all |
+| Sign-in and cross-device sync | [12](12-security.md) | Backend |
+| Multi-campus in one install | [03](03-data-model.md) | Remote bundle tier |
+| Per-campus announcements | [03](03-data-model.md) | Backend |
+| Raster plan underlay rendering | [05 §8](05-map-representation.md) | Remote data source + disk cache |
+| Voice guidance (TTS) | [10](10-accessibility.md) | — |
+| Multi-language (i18n) | [04 §6](04-routing-engine.md) | — |
+| Saved locations ("my hostel room") | — | — |
+| Share a route as a link or QR | — | Deep links already exist; needs a share sheet |
+
+---
+
+## Candidate features (unscheduled)
+
+Grouped by what they need, which is more useful than a flat list.
+
+**Needs only map data**
+
+Gender-filtered washrooms · water cooler / printer / ATM / vending POI layers · departments directory · faculty cabin search · building open-hours with closed-route warnings · emergency exit route mode · first-aid and AED locator · cycle stands · parking zones · hostel blocks · club-room directory
+
+**Needs a backend**
+
+Elevator outage reports (community, time-boxed) · temporary closures with reroute · lost & found board · food court menus and hours · shuttle stop info · contribution leaderboards · "what's new in your campus map" · TV/kiosk mode for lobbies
+
+**Needs UI work only**
+
+Route preview scrubber · walking-time and step estimates · route history insights · home-screen widgets · high-contrast theme · campus tour mode with curated waypoints
+
+**Needs integration**
+
+Timetable import (ICS or photo) → "navigate to next class" · LMS/ERP deep links · printer queue status · exam-hall finder by seat number
+
+**Needs positioning** — all blocked on [18 §5](18-navigation-runtime.md)
+
+QR checkpoints · BLE beacons · Wi-Fi RTT · dead reckoning · AR wayfinding overlay · crowd density heatmaps · social meetup pins · smart-glasses directions · haptic-belt navigation for blind users
+
+---
+
+## Research ideas
+
+Genuinely speculative. Listed because a few are legitimately paper-shaped.
+
+| Idea | Note |
+|---|---|
+| **Graph-constrained dead reckoning** | **Highest research value.** UniNav already has the corridor graph; snapping PDR output to graph edges should bound drift measurably versus unconstrained PDR |
+| Camera relocalisation — photo of a corridor → position | Well-studied outdoors; indoor corridors are visually repetitive, which is exactly what makes it hard |
+| Auto-OCR of door nameplates → room suggestions | Would cut mapping cost, the project's actual bottleneck |
+| Photogrammetry from student videos to generate plans | Same motivation, much harder |
+| LLM concierge — "where do I pay hostel fees?" → office + route | Needs a services directory more than it needs an LLM |
+| Occupancy prediction | Needs longitudinal data nobody is collecting |
+| Federation between campuses, OSM-style | Interesting only once several campuses exist |
+| Open data export under an ODbL-style licence | A governance decision, not an engineering one |
+| Digital-twin API for facilities teams | The most plausible route to institutional funding |
+
+---
+
+## Prioritisation rules
+
+1. **Nothing from "candidate" starts until Phase 1 is complete for one full building.** A thin map with many features is worse than a complete map with few.
+2. **Nothing hardware-dependent before QR checkpoints prove the localisation UX.** Beacons and Wi-Fi RTT are infrastructure commitments; QR costs a printout.
+3. **Nothing needing a backend before there is content worth backing.** Firebase adds capability the project cannot yet use.
+4. **A feature that cannot be maintained by one person does not ship**, however good the demo.

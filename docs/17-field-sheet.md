@@ -1,4 +1,14 @@
-# SJT Field Sheet — carry this
+# Field Sheet — print this and carry it
+
+> **Which pipeline is this for?**
+>
+> This sheet supports **Pipeline B — the paced survey** ([16-mapping-guide.md](16-mapping-guide.md)), for buildings where no floor-plan image is available.
+>
+> **If you have a plan image, use Pipeline A instead** — trace it in `app/tool/tracer/index.html`. It is faster and more accurate, and it is how every currently shipped floor was mapped.
+>
+> **Even with Pipeline A you still need to walk the building**, because edge weights are paced step counts and no plan image contains them. In that case use the table below to record *distances between traced points* rather than a full corridor survey.
+
+---
 
 ## Before you start (2 minutes)
 

@@ -1,4 +1,20 @@
-# UniNav — Community Mapping System (v1.0)
+# UniNav — Community Mapping System
+
+> ## ⚠ Status: DESIGN ONLY — not implemented
+>
+> **No contribution, moderation, versioning or reputation code exists.** There is no backend, no auth, and no `contributions` collection. Nothing in this document is running.
+>
+> **What does exist** is the seed of it: a report-a-problem bottom sheet reachable from any room card, a failed route, or an unmapped building. Reports queue in a local **offline outbox** (`FeedbackOutboxNotifier`) with a `markDrained` hook waiting for a future sync worker. The user is told their report succeeded, because from their point of view it did — network is the app's problem, not theirs.
+>
+> **Why deferred:** moderation is meaningless before there is a map worth correcting. The current map is two floors of one building ([15-known-issues.md](15-known-issues.md)). Building a contribution pipeline now would be infrastructure for content that does not yet exist.
+>
+> **Why kept:** this design shapes decisions already made — bundle immutability, versioned publishing, the separation of `roles/` from `users/`, and payloads that mirror bundle shapes so approval is a mechanical merge. Discarding it would lose the reasoning behind those.
+>
+> See [14-roadmap.md](14-roadmap.md) for sequencing.
+
+Related: [Data model](03-data-model.md) · [Security](12-security.md) · [Admin dashboard](07-admin-dashboard.md) · [Mapping guide](16-mapping-guide.md)
+
+---
 
 ## 1. Model: propose → moderate → publish (never direct edit)
 
