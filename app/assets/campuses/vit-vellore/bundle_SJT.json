@@ -5,6 +5,534 @@
   "version": 1,
   "floors": [
     {
+      "id": "f2",
+      "level": 2,
+      "name": "2nd Floor",
+      "widthM": 83.55,
+      "heightM": 93.62,
+      "planImagePath": "2nd floor.png",
+      "sourcePxPerMetre": 8.834,
+      "corridorWidthM": 2.75,
+      "corridors": [
+        [
+          [
+            22.41,
+            71.89
+          ],
+          [
+            22.64,
+            68.04
+          ],
+          [
+            28.19,
+            68.49
+          ],
+          [
+            28.19,
+            71.77
+          ],
+          [
+            71.89,
+            76.19
+          ],
+          [
+            72.22,
+            72.11
+          ],
+          [
+            49.36,
+            70.19
+          ],
+          [
+            49.7,
+            71.89
+          ],
+          [
+            70.19,
+            73.81
+          ],
+          [
+            29.77,
+            70.64
+          ],
+          [
+            24.91,
+            70.19
+          ],
+          [
+            24.34,
+            70.07
+          ],
+          [
+            24.23,
+            72.22
+          ],
+          [
+            26.94,
+            71.89
+          ],
+          [
+            28.64,
+            34.98
+          ],
+          [
+            35.09,
+            41.66
+          ],
+          [
+            45.51,
+            41.55
+          ],
+          [
+            52.87,
+            33.85
+          ],
+          [
+            53.43,
+            29.43
+          ],
+          [
+            57.62,
+            24.11
+          ],
+          [
+            57.73,
+            17.21
+          ],
+          [
+            63.96,
+            16.98
+          ],
+          [
+            63.17,
+            39.17
+          ],
+          [
+            63.06,
+            32.26
+          ],
+          [
+            62.26,
+            32.49
+          ],
+          [
+            60.56,
+            31.24
+          ],
+          [
+            54.11,
+            37.36
+          ],
+          [
+            54.34,
+            38.94
+          ],
+          [
+            52.75,
+            39.17
+          ],
+          [
+            51.17,
+            69.28
+          ],
+          [
+            49.58,
+            69.17
+          ],
+          [
+            50.72,
+            37.36
+          ],
+          [
+            61.7,
+            27.96
+          ],
+          [
+            62.26,
+            19.13
+          ],
+          [
+            59.66,
+            19.24
+          ],
+          [
+            59.32,
+            27.4
+          ],
+          [
+            54.9,
+            32.15
+          ],
+          [
+            55.13,
+            29.89
+          ],
+          [
+            60.9,
+            20.94
+          ],
+          [
+            60.56,
+            26.6
+          ],
+          [
+            62.04,
+            30.0
+          ],
+          [
+            45.06,
+            43.02
+          ],
+          [
+            49.24,
+            43.02
+          ],
+          [
+            30.0,
+            43.24
+          ],
+          [
+            30.11,
+            38.72
+          ],
+          [
+            32.72,
+            41.77
+          ],
+          [
+            49.24,
+            41.66
+          ],
+          [
+            30.0,
+            41.77
+          ],
+          [
+            28.53,
+            70.07
+          ]
+        ],
+        [
+          [
+            26.72,
+            39.06
+          ],
+          [
+            27.06,
+            37.13
+          ],
+          [
+            20.38,
+            29.66
+          ],
+          [
+            19.81,
+            39.06
+          ],
+          [
+            20.83,
+            20.49
+          ],
+          [
+            29.32,
+            20.38
+          ],
+          [
+            21.62,
+            28.19
+          ],
+          [
+            26.94,
+            33.62
+          ],
+          [
+            28.3,
+            32.83
+          ],
+          [
+            28.19,
+            29.66
+          ],
+          [
+            25.36,
+            27.06
+          ],
+          [
+            24.11,
+            28.3
+          ],
+          [
+            27.17,
+            31.13
+          ],
+          [
+            21.51,
+            24.34
+          ],
+          [
+            22.19,
+            22.3
+          ],
+          [
+            25.36,
+            22.19
+          ],
+          [
+            23.32,
+            23.89
+          ]
+        ],
+        [
+          [
+            7.25,
+            52.98
+          ],
+          [
+            26.49,
+            53.66
+          ]
+        ],
+        [
+          [
+            18.0,
+            73.81
+          ],
+          [
+            24.79,
+            74.38
+          ]
+        ],
+        [
+          [
+            21.51,
+            32.94
+          ],
+          [
+            21.51,
+            33.28
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "f3",
+      "level": 3,
+      "name": "3rd Floor",
+      "widthM": 88.21,
+      "heightM": 99.21,
+      "planImagePath": "3rd floor.png",
+      "sourcePxPerMetre": 8.366,
+      "corridorWidthM": 4.25,
+      "corridors": [
+        [
+          [
+            21.04,
+            76.14
+          ],
+          [
+            73.99,
+            79.25
+          ],
+          [
+            73.99,
+            76.62
+          ],
+          [
+            51.99,
+            74.7
+          ],
+          [
+            53.31,
+            39.92
+          ],
+          [
+            48.17,
+            44.7
+          ],
+          [
+            29.52,
+            44.34
+          ],
+          [
+            29.64,
+            38.37
+          ],
+          [
+            21.16,
+            29.28
+          ],
+          [
+            21.4,
+            22.11
+          ],
+          [
+            28.09,
+            21.87
+          ],
+          [
+            22.71,
+            26.77
+          ],
+          [
+            28.09,
+            32.63
+          ],
+          [
+            21.04,
+            31.2
+          ],
+          [
+            21.4,
+            32.99
+          ],
+          [
+            20.08,
+            40.04
+          ],
+          [
+            21.04,
+            33.23
+          ],
+          [
+            27.61,
+            39.92
+          ],
+          [
+            30.96,
+            39.8
+          ],
+          [
+            35.26,
+            44.58
+          ],
+          [
+            52.11,
+            44.82
+          ],
+          [
+            55.58,
+            37.89
+          ],
+          [
+            56.89,
+            32.63
+          ],
+          [
+            62.03,
+            28.45
+          ],
+          [
+            62.87,
+            27.37
+          ],
+          [
+            57.25,
+            21.4
+          ],
+          [
+            65.86,
+            21.51
+          ],
+          [
+            65.98,
+            41.36
+          ],
+          [
+            65.86,
+            21.87
+          ],
+          [
+            63.59,
+            23.91
+          ],
+          [
+            63.47,
+            33.59
+          ],
+          [
+            60.24,
+            33.47
+          ],
+          [
+            60.96,
+            35.02
+          ],
+          [
+            55.7,
+            39.09
+          ],
+          [
+            55.7,
+            40.88
+          ]
+        ],
+        [
+          [
+            54.5,
+            42.91
+          ],
+          [
+            52.59,
+            72.67
+          ]
+        ],
+        [
+          [
+            50.32,
+            76.14
+          ],
+          [
+            21.4,
+            75.18
+          ]
+        ],
+        [
+          [
+            21.51,
+            73.03
+          ],
+          [
+            27.13,
+            73.39
+          ]
+        ],
+        [
+          [
+            27.73,
+            72.67
+          ],
+          [
+            29.16,
+            44.22
+          ],
+          [
+            27.13,
+            72.31
+          ]
+        ],
+        [
+          [
+            3.94,
+            56.3
+          ],
+          [
+            25.7,
+            57.13
+          ]
+        ],
+        [
+          [
+            75.9,
+            75.42
+          ],
+          [
+            75.78,
+            80.32
+          ]
+        ]
+      ]
+    },
+    {
       "id": "f4",
       "level": 4,
       "name": "4th Floor",
@@ -1074,6 +1602,1624 @@
     }
   ],
   "rooms": [
+    {
+      "id": "SJT223",
+      "floorId": "f2",
+      "name": "Classroom 223",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "223"
+      ],
+      "polygon": [
+        [
+          25.81,
+          73.02
+        ],
+        [
+          25.24,
+          82.75
+        ],
+        [
+          33.28,
+          83.89
+        ],
+        [
+          34.07,
+          73.7
+        ]
+      ],
+      "labelPoint": [
+        29.6,
+        78.33999999999999
+      ],
+      "nodeId": "n_f2_SJT223",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT224",
+      "floorId": "f2",
+      "name": "Classroom 224",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "224"
+      ],
+      "polygon": [
+        [
+          33.96,
+          73.7
+        ],
+        [
+          33.4,
+          84.0
+        ],
+        [
+          43.7,
+          85.36
+        ],
+        [
+          44.26,
+          74.94
+        ]
+      ],
+      "labelPoint": [
+        38.83,
+        79.5
+      ],
+      "nodeId": "n_f2_SJT224",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT201",
+      "floorId": "f2",
+      "name": "Classroom 201",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "201"
+      ],
+      "polygon": [
+        [
+          44.26,
+          74.72
+        ],
+        [
+          43.58,
+          85.13
+        ],
+        [
+          51.51,
+          86.04
+        ],
+        [
+          52.3,
+          75.85
+        ]
+      ],
+      "labelPoint": [
+        47.912499999999994,
+        80.435
+      ],
+      "nodeId": "n_f2_SJT201",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT202",
+      "floorId": "f2",
+      "name": "Classroom 202",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "202"
+      ],
+      "polygon": [
+        [
+          52.41,
+          75.51
+        ],
+        [
+          51.51,
+          87.96
+        ],
+        [
+          61.47,
+          89.43
+        ],
+        [
+          62.26,
+          76.75
+        ]
+      ],
+      "labelPoint": [
+        56.912499999999994,
+        82.4125
+      ],
+      "nodeId": "n_f2_SJT202",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT203",
+      "floorId": "f2",
+      "name": "Classroom 203",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "203"
+      ],
+      "polygon": [
+        [
+          62.15,
+          76.75
+        ],
+        [
+          61.7,
+          89.43
+        ],
+        [
+          72.11,
+          90.68
+        ],
+        [
+          73.02,
+          77.77
+        ]
+      ],
+      "labelPoint": [
+        67.24499999999999,
+        83.6575
+      ],
+      "nodeId": "n_f2_SJT203",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT204",
+      "floorId": "f2",
+      "name": "Classroom 204",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "204"
+      ],
+      "polygon": [
+        [
+          62.83,
+          60.23
+        ],
+        [
+          62.15,
+          69.73
+        ],
+        [
+          73.02,
+          71.09
+        ],
+        [
+          73.81,
+          60.79
+        ]
+      ],
+      "labelPoint": [
+        67.9525,
+        65.46000000000001
+      ],
+      "nodeId": "n_f2_SJT204",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT205",
+      "floorId": "f2",
+      "name": "Classroom 205",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "205"
+      ],
+      "polygon": [
+        [
+          52.64,
+          59.43
+        ],
+        [
+          52.41,
+          69.39
+        ],
+        [
+          61.81,
+          69.85
+        ],
+        [
+          62.6,
+          60.23
+        ]
+      ],
+      "labelPoint": [
+        57.365,
+        64.725
+      ],
+      "nodeId": "n_f2_SJT205",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT207A",
+      "floorId": "f2",
+      "name": "Classroom 207A",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "207A"
+      ],
+      "polygon": [
+        [
+          53.77,
+          39.96
+        ],
+        [
+          53.32,
+          48.45
+        ],
+        [
+          61.24,
+          48.79
+        ],
+        [
+          61.7,
+          40.19
+        ]
+      ],
+      "labelPoint": [
+        57.50750000000001,
+        44.3475
+      ],
+      "nodeId": "n_f2_SJT207A",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT207",
+      "floorId": "f2",
+      "name": "Classroom 207",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "207"
+      ],
+      "polygon": [
+        [
+          53.43,
+          52.64
+        ],
+        [
+          68.49,
+          53.32
+        ],
+        [
+          69.51,
+          40.19
+        ],
+        [
+          61.81,
+          40.19
+        ],
+        [
+          61.36,
+          48.79
+        ],
+        [
+          53.32,
+          48.68
+        ]
+      ],
+      "labelPoint": [
+        61.32,
+        47.30166666666667
+      ],
+      "nodeId": "n_f2_SJT207",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT208",
+      "floorId": "f2",
+      "name": "Classroom 208",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "208"
+      ],
+      "polygon": [
+        [
+          64.41,
+          29.21
+        ],
+        [
+          64.19,
+          39.74
+        ],
+        [
+          74.72,
+          39.85
+        ],
+        [
+          75.28,
+          28.87
+        ]
+      ],
+      "labelPoint": [
+        69.65,
+        34.417500000000004
+      ],
+      "nodeId": "n_f2_SJT208",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT215",
+      "floorId": "f2",
+      "name": "Classroom 215",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "215"
+      ],
+      "polygon": [
+        [
+          11.32,
+          30.68
+        ],
+        [
+          10.75,
+          40.19
+        ],
+        [
+          18.57,
+          40.19
+        ],
+        [
+          19.13,
+          30.57
+        ]
+      ],
+      "labelPoint": [
+        14.942499999999999,
+        35.4075
+      ],
+      "nodeId": "n_f2_SJT215",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT211A",
+      "floorId": "f2",
+      "name": "Classroom 211A",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "211A"
+      ],
+      "polygon": [
+        [
+          40.64,
+          21.62
+        ],
+        [
+          40.07,
+          30.79
+        ],
+        [
+          51.51,
+          30.79
+        ],
+        [
+          52.07,
+          27.96
+        ],
+        [
+          45.85,
+          21.28
+        ]
+      ],
+      "labelPoint": [
+        46.028,
+        26.488
+      ],
+      "nodeId": "n_f2_SJT211A",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT211",
+      "floorId": "f2",
+      "name": "Classroom 211",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "211"
+      ],
+      "polygon": [
+        [
+          40.19,
+          30.91
+        ],
+        [
+          51.62,
+          30.57
+        ],
+        [
+          51.51,
+          33.51
+        ],
+        [
+          44.83,
+          40.19
+        ],
+        [
+          39.96,
+          40.07
+        ]
+      ],
+      "labelPoint": [
+        45.622,
+        35.05
+      ],
+      "nodeId": "n_f2_SJT211",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT212",
+      "floorId": "f2",
+      "name": "Lab 212",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "212"
+      ],
+      "polygon": [
+        [
+          40.64,
+          21.62
+        ],
+        [
+          39.85,
+          39.85
+        ],
+        [
+          35.32,
+          40.19
+        ],
+        [
+          29.43,
+          33.74
+        ],
+        [
+          29.21,
+          28.87
+        ],
+        [
+          36.0,
+          22.08
+        ]
+      ],
+      "labelPoint": [
+        35.075,
+        31.058333333333337
+      ],
+      "nodeId": "n_f2_SJT212",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT216",
+      "floorId": "f2",
+      "name": "Lab 216",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "216"
+      ],
+      "polygon": [
+        [
+          18.57,
+          39.62
+        ],
+        [
+          18.0,
+          52.64
+        ],
+        [
+          26.38,
+          52.87
+        ],
+        [
+          26.83,
+          39.96
+        ]
+      ],
+      "labelPoint": [
+        22.445,
+        46.2725
+      ],
+      "nodeId": "n_f2_SJT216",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT219",
+      "floorId": "f2",
+      "name": "Lab 219",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "219"
+      ],
+      "polygon": [
+        [
+          17.77,
+          54.34
+        ],
+        [
+          16.98,
+          66.34
+        ],
+        [
+          25.36,
+          67.24
+        ],
+        [
+          26.38,
+          54.68
+        ]
+      ],
+      "labelPoint": [
+        21.6225,
+        60.650000000000006
+      ],
+      "nodeId": "n_f2_SJT219",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT218",
+      "floorId": "f2",
+      "name": "Lab 218",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "218"
+      ],
+      "polygon": [
+        [
+          9.96,
+          54.11
+        ],
+        [
+          9.62,
+          65.89
+        ],
+        [
+          17.09,
+          66.68
+        ],
+        [
+          17.89,
+          54.68
+        ]
+      ],
+      "labelPoint": [
+        13.64,
+        60.34
+      ],
+      "nodeId": "n_f2_SJT218",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT217",
+      "floorId": "f2",
+      "name": "Lab 217",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "217"
+      ],
+      "polygon": [
+        [
+          10.75,
+          40.07
+        ],
+        [
+          9.85,
+          52.07
+        ],
+        [
+          17.77,
+          52.53
+        ],
+        [
+          18.68,
+          40.3
+        ]
+      ],
+      "labelPoint": [
+        14.262500000000001,
+        46.24250000000001
+      ],
+      "nodeId": "n_f2_SJT217",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "LJ1",
+      "floorId": "f2",
+      "name": "LJ1",
+      "type": "junction",
+      "aliases": [
+        "lift",
+        "stairs"
+      ],
+      "polygon": [
+        [
+          32.6,
+          63.96
+        ],
+        [
+          32.26,
+          69.39
+        ],
+        [
+          42.68,
+          70.3
+        ],
+        [
+          43.13,
+          64.53
+        ]
+      ],
+      "labelPoint": [
+        37.6675,
+        67.04499999999999
+      ],
+      "nodeId": "n_f2_LJ1",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "LJ2",
+      "floorId": "f2",
+      "name": "LJ2",
+      "type": "junction",
+      "aliases": [
+        "lift",
+        "stairs"
+      ],
+      "polygon": [
+        [
+          35.43,
+          44.15
+        ],
+        [
+          35.43,
+          49.81
+        ],
+        [
+          45.85,
+          50.26
+        ],
+        [
+          46.19,
+          44.49
+        ]
+      ],
+      "labelPoint": [
+        40.725,
+        47.1775
+      ],
+      "nodeId": "n_f2_LJ2",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "LJ3",
+      "floorId": "f2",
+      "name": "LJ3",
+      "type": "junction",
+      "aliases": [
+        "lift",
+        "stairs"
+      ],
+      "polygon": [
+        [
+          80.04,
+          71.43
+        ],
+        [
+          79.81,
+          78.45
+        ],
+        [
+          73.02,
+          77.66
+        ],
+        [
+          73.36,
+          70.98
+        ]
+      ],
+      "labelPoint": [
+        76.5575,
+        74.63
+      ],
+      "nodeId": "n_f2_LJ3",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT209",
+      "floorId": "f2",
+      "name": "Men's Washroom",
+      "type": "washroom",
+      "aliases": [
+        "Washroom",
+        "Toilet",
+        "Mens"
+      ],
+      "polygon": [
+        [
+          65.32,
+          16.53
+        ],
+        [
+          64.64,
+          27.4
+        ],
+        [
+          75.51,
+          26.94
+        ],
+        [
+          75.96,
+          15.85
+        ]
+      ],
+      "labelPoint": [
+        70.35749999999999,
+        21.68
+      ],
+      "nodeId": "n_f2_SJT209",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT214",
+      "floorId": "f2",
+      "name": "Women's Washroom",
+      "type": "washroom",
+      "aliases": [
+        "Washroom",
+        "Toilet",
+        "Women"
+      ],
+      "polygon": [
+        [
+          11.43,
+          19.81
+        ],
+        [
+          11.09,
+          29.21
+        ],
+        [
+          19.24,
+          28.98
+        ],
+        [
+          19.81,
+          19.81
+        ]
+      ],
+      "labelPoint": [
+        15.392499999999998,
+        24.4525
+      ],
+      "nodeId": "n_f2_SJT214",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT323",
+      "floorId": "f3",
+      "name": "Room 323",
+      "type": "other",
+      "aliases": [
+        "323"
+      ],
+      "polygon": [
+        [
+          24.38,
+          77.93
+        ],
+        [
+          23.91,
+          89.17
+        ],
+        [
+          33.47,
+          89.88
+        ],
+        [
+          34.3,
+          78.77
+        ]
+      ],
+      "labelPoint": [
+        29.014999999999997,
+        83.9375
+      ],
+      "nodeId": "n_f3_SJT323",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT324",
+      "floorId": "f3",
+      "name": "Classroom 324",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "324"
+      ],
+      "polygon": [
+        [
+          34.18,
+          78.89
+        ],
+        [
+          33.47,
+          90.24
+        ],
+        [
+          45.3,
+          90.96
+        ],
+        [
+          45.54,
+          79.72
+        ]
+      ],
+      "labelPoint": [
+        39.6225,
+        84.95249999999999
+      ],
+      "nodeId": "n_f3_SJT324",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT301",
+      "floorId": "f3",
+      "name": "Classroom 301",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "301"
+      ],
+      "polygon": [
+        [
+          45.42,
+          79.72
+        ],
+        [
+          45.18,
+          90.96
+        ],
+        [
+          53.31,
+          91.8
+        ],
+        [
+          54.03,
+          80.08
+        ]
+      ],
+      "labelPoint": [
+        49.485,
+        85.64
+      ],
+      "nodeId": "n_f3_SJT301",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT302",
+      "floorId": "f3",
+      "name": "Classroom 302",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "302"
+      ],
+      "polygon": [
+        [
+          54.03,
+          80.08
+        ],
+        [
+          64.78,
+          81.16
+        ],
+        [
+          64.54,
+          94.55
+        ],
+        [
+          53.67,
+          93.59
+        ]
+      ],
+      "labelPoint": [
+        59.25500000000001,
+        87.345
+      ],
+      "nodeId": "n_f3_SJT302",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT303",
+      "floorId": "f3",
+      "name": "Classroom 303",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "303"
+      ],
+      "polygon": [
+        [
+          64.66,
+          80.92
+        ],
+        [
+          64.42,
+          94.43
+        ],
+        [
+          75.18,
+          95.62
+        ],
+        [
+          75.66,
+          81.99
+        ]
+      ],
+      "labelPoint": [
+        69.97999999999999,
+        88.24000000000001
+      ],
+      "nodeId": "n_f3_SJT303",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT304",
+      "floorId": "f3",
+      "name": "Classroom 304",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "304"
+      ],
+      "polygon": [
+        [
+          65.38,
+          63.59
+        ],
+        [
+          64.54,
+          73.99
+        ],
+        [
+          75.9,
+          74.35
+        ],
+        [
+          76.38,
+          64.19
+        ]
+      ],
+      "labelPoint": [
+        70.55000000000001,
+        69.03
+      ],
+      "nodeId": "n_f3_SJT304",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT305",
+      "floorId": "f3",
+      "name": "Classroom 305",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "305"
+      ],
+      "polygon": [
+        [
+          54.98,
+          63.11
+        ],
+        [
+          54.74,
+          72.91
+        ],
+        [
+          64.54,
+          73.75
+        ],
+        [
+          64.9,
+          63.47
+        ]
+      ],
+      "labelPoint": [
+        59.79,
+        68.31
+      ],
+      "nodeId": "n_f3_SJT305",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT307",
+      "floorId": "f3",
+      "name": "Smart Classroom",
+      "type": "classroom",
+      "aliases": [
+        "Smart Classroom",
+        "307"
+      ],
+      "polygon": [
+        [
+          56.06,
+          43.15
+        ],
+        [
+          71.72,
+          43.15
+        ],
+        [
+          71.6,
+          56.66
+        ],
+        [
+          55.82,
+          56.42
+        ]
+      ],
+      "labelPoint": [
+        63.8,
+        49.845
+      ],
+      "nodeId": "n_f3_SJT307",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT308",
+      "floorId": "f3",
+      "name": "Classroom 308",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "308"
+      ],
+      "polygon": [
+        [
+          67.05,
+          32.27
+        ],
+        [
+          77.69,
+          32.27
+        ],
+        [
+          77.69,
+          43.03
+        ],
+        [
+          66.82,
+          43.03
+        ]
+      ],
+      "labelPoint": [
+        72.3125,
+        37.650000000000006
+      ],
+      "nodeId": "n_f3_SJT308",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT309",
+      "floorId": "f3",
+      "name": "Men's Washroom",
+      "type": "washroom",
+      "aliases": [
+        "Washroom",
+        "Toilet",
+        "Men"
+      ],
+      "polygon": [
+        [
+          67.65,
+          19.72
+        ],
+        [
+          78.29,
+          19.72
+        ],
+        [
+          78.05,
+          30.12
+        ],
+        [
+          67.53,
+          30.6
+        ]
+      ],
+      "labelPoint": [
+        72.88,
+        25.04
+      ],
+      "nodeId": "n_f3_SJT309",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT311",
+      "floorId": "f3",
+      "name": "Classroom 311",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "311"
+      ],
+      "polygon": [
+        [
+          42.55,
+          23.55
+        ],
+        [
+          47.81,
+          23.55
+        ],
+        [
+          54.5,
+          30.24
+        ],
+        [
+          54.15,
+          32.99
+        ],
+        [
+          41.95,
+          33.11
+        ]
+      ],
+      "labelPoint": [
+        48.19200000000001,
+        28.688
+      ],
+      "nodeId": "n_f3_SJT311",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT311A",
+      "floorId": "f3",
+      "name": "Classroom 311A",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "311A"
+      ],
+      "polygon": [
+        [
+          41.6,
+          32.99
+        ],
+        [
+          54.38,
+          33.11
+        ],
+        [
+          54.26,
+          35.86
+        ],
+        [
+          46.85,
+          42.79
+        ],
+        [
+          41.48,
+          42.67
+        ]
+      ],
+      "labelPoint": [
+        47.714,
+        37.484
+      ],
+      "nodeId": "n_f3_SJT311A",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT315",
+      "floorId": "f3",
+      "name": "Classroom 315",
+      "type": "classroom",
+      "aliases": [
+        "Classroom",
+        "315"
+      ],
+      "polygon": [
+        [
+          9.68,
+          31.91
+        ],
+        [
+          18.77,
+          31.67
+        ],
+        [
+          17.93,
+          41.36
+        ],
+        [
+          8.73,
+          41.48
+        ]
+      ],
+      "labelPoint": [
+        13.7775,
+        36.605
+      ],
+      "nodeId": "n_f3_SJT315",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT314",
+      "floorId": "f3",
+      "name": "Women's Washroom",
+      "type": "washroom",
+      "aliases": [
+        "Washroom",
+        "Toilet",
+        "Women"
+      ],
+      "polygon": [
+        [
+          10.16,
+          20.8
+        ],
+        [
+          9.56,
+          30.12
+        ],
+        [
+          18.89,
+          30.12
+        ],
+        [
+          19.84,
+          20.2
+        ]
+      ],
+      "labelPoint": [
+        14.6125,
+        25.310000000000002
+      ],
+      "nodeId": "n_f3_SJT314",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT312",
+      "floorId": "f3",
+      "name": "Lab 312",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "312"
+      ],
+      "polygon": [
+        [
+          42.19,
+          23.67
+        ],
+        [
+          41.12,
+          42.67
+        ],
+        [
+          35.98,
+          42.55
+        ],
+        [
+          30.12,
+          35.5
+        ],
+        [
+          30.12,
+          31.08
+        ],
+        [
+          37.17,
+          23.55
+        ]
+      ],
+      "labelPoint": [
+        36.11666666666667,
+        33.169999999999995
+      ],
+      "nodeId": "n_f3_SJT312",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT316",
+      "floorId": "f3",
+      "name": "Lab 316",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "316"
+      ],
+      "polygon": [
+        [
+          17.45,
+          41.83
+        ],
+        [
+          16.61,
+          55.7
+        ],
+        [
+          26.3,
+          55.94
+        ],
+        [
+          27.25,
+          42.07
+        ]
+      ],
+      "labelPoint": [
+        21.9025,
+        48.885
+      ],
+      "nodeId": "n_f3_SJT316",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT319",
+      "floorId": "f3",
+      "name": "Lab 319",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "319"
+      ],
+      "polygon": [
+        [
+          16.14,
+          57.49
+        ],
+        [
+          15.06,
+          71.0
+        ],
+        [
+          25.1,
+          71.84
+        ],
+        [
+          26.18,
+          58.09
+        ]
+      ],
+      "labelPoint": [
+        20.62,
+        64.605
+      ],
+      "nodeId": "n_f3_SJT319",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT318",
+      "floorId": "f3",
+      "name": "Lab 318",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "318"
+      ],
+      "polygon": [
+        [
+          7.29,
+          57.13
+        ],
+        [
+          5.98,
+          70.52
+        ],
+        [
+          14.7,
+          71.12
+        ],
+        [
+          16.49,
+          57.73
+        ]
+      ],
+      "labelPoint": [
+        11.114999999999998,
+        64.125
+      ],
+      "nodeId": "n_f3_SJT318",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT317",
+      "floorId": "f3",
+      "name": "Lab 317",
+      "type": "lab",
+      "aliases": [
+        "Lab",
+        "317"
+      ],
+      "polygon": [
+        [
+          8.37,
+          41.83
+        ],
+        [
+          7.41,
+          54.86
+        ],
+        [
+          16.61,
+          55.7
+        ],
+        [
+          17.33,
+          41.36
+        ]
+      ],
+      "labelPoint": [
+        12.43,
+        48.4375
+      ],
+      "nodeId": "n_f3_SJT317",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "LJ1",
+      "floorId": "f3",
+      "name": "LJ1",
+      "type": "junction",
+      "aliases": [
+        "Lift",
+        "Stairs"
+      ],
+      "polygon": [
+        [
+          44.34,
+          68.61
+        ],
+        [
+          44.22,
+          74.23
+        ],
+        [
+          32.51,
+          73.87
+        ],
+        [
+          32.87,
+          67.77
+        ]
+      ],
+      "labelPoint": [
+        38.485,
+        71.12
+      ],
+      "nodeId": "n_f3_LJ1",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "LJ2",
+      "floorId": "f3",
+      "name": "LJ2",
+      "type": "junction",
+      "aliases": [
+        "Lift",
+        "Stairs"
+      ],
+      "polygon": [
+        [
+          36.81,
+          46.73
+        ],
+        [
+          36.22,
+          52.59
+        ],
+        [
+          47.81,
+          53.31
+        ],
+        [
+          48.17,
+          46.85
+        ]
+      ],
+      "labelPoint": [
+        42.2525,
+        49.87
+      ],
+      "nodeId": "n_f3_LJ2",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "LJ3",
+      "floorId": "f3",
+      "name": "LJ3",
+      "type": "junction",
+      "aliases": [
+        "Lift",
+        "Stairs"
+      ],
+      "polygon": [
+        [
+          82.83,
+          75.18
+        ],
+        [
+          82.47,
+          82.11
+        ],
+        [
+          76.14,
+          81.76
+        ],
+        [
+          76.38,
+          74.46
+        ]
+      ],
+      "labelPoint": [
+        79.455,
+        78.3775
+      ],
+      "nodeId": "n_f3_LJ3",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
     {
       "id": "SJT421",
       "floorId": "f4",
@@ -3831,6 +5977,62 @@
   ],
   "pois": [
     {
+      "id": "poi_SJT209",
+      "floorId": "f2",
+      "type": "washroom",
+      "point": [
+        65.09,
+        18.23
+      ],
+      "name": "Men's Washroom",
+      "nodeId": "n_f2_SJT209",
+      "tags": {
+        "gender": "male"
+      }
+    },
+    {
+      "id": "poi_SJT214",
+      "floorId": "f2",
+      "type": "washroom",
+      "point": [
+        19.47,
+        20.6
+      ],
+      "name": "Women's Washroom",
+      "nodeId": "n_f2_SJT214",
+      "tags": {
+        "gender": "female"
+      }
+    },
+    {
+      "id": "poi_SJT309",
+      "floorId": "f3",
+      "type": "washroom",
+      "point": [
+        67.65,
+        21.75
+      ],
+      "name": "Men's Washroom",
+      "nodeId": "n_f3_SJT309",
+      "tags": {
+        "gender": "male"
+      }
+    },
+    {
+      "id": "poi_SJT314",
+      "floorId": "f3",
+      "type": "washroom",
+      "point": [
+        19.0,
+        21.16
+      ],
+      "name": "Women's Washroom",
+      "nodeId": "n_f3_SJT314",
+      "tags": {
+        "gender": "female"
+      }
+    },
+    {
       "id": "poi_SJT410",
       "floorId": "f4",
       "type": "washroom",
@@ -3944,6 +6146,363 @@
     }
   ],
   "nodes": [
+    {
+      "id": "n_f2_SJT223",
+      "floorId": "f2",
+      "x": 27.28,
+      "y": 73.13,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT224",
+      "floorId": "f2",
+      "x": 35.09,
+      "y": 73.58,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT201",
+      "floorId": "f2",
+      "x": 50.38,
+      "y": 75.28,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT202",
+      "floorId": "f2",
+      "x": 60.23,
+      "y": 76.41,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT203",
+      "floorId": "f2",
+      "x": 71.21,
+      "y": 77.77,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT204",
+      "floorId": "f2",
+      "x": 70.87,
+      "y": 70.53,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT205",
+      "floorId": "f2",
+      "x": 60.45,
+      "y": 69.62,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT207A",
+      "floorId": "f2",
+      "x": 54.0,
+      "y": 40.53,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT207",
+      "floorId": "f2",
+      "x": 53.21,
+      "y": 50.83,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT208",
+      "floorId": "f2",
+      "x": 63.96,
+      "y": 38.49,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT215",
+      "floorId": "f2",
+      "x": 19.36,
+      "y": 38.6,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT211A",
+      "floorId": "f2",
+      "x": 52.19,
+      "y": 28.75,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT211",
+      "floorId": "f2",
+      "x": 42.34,
+      "y": 40.19,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT212",
+      "floorId": "f2",
+      "x": 36.79,
+      "y": 39.85,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT216",
+      "floorId": "f2",
+      "x": 24.34,
+      "y": 52.41,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT219",
+      "floorId": "f2",
+      "x": 24.0,
+      "y": 54.45,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT218",
+      "floorId": "f2",
+      "x": 10.64,
+      "y": 54.11,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT217",
+      "floorId": "f2",
+      "x": 11.55,
+      "y": 52.07,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_L1",
+      "floorId": "f2",
+      "x": 21.06,
+      "y": 69.62,
+      "kind": "elevator"
+    },
+    {
+      "id": "n_f2_LJ1",
+      "floorId": "f2",
+      "x": 38.72,
+      "y": 68.72,
+      "kind": "junction"
+    },
+    {
+      "id": "n_f2_LJ2",
+      "floorId": "f2",
+      "x": 40.07,
+      "y": 44.72,
+      "kind": "junction"
+    },
+    {
+      "id": "n_f2_LJ3",
+      "floorId": "f2",
+      "x": 73.02,
+      "y": 73.7,
+      "kind": "junction"
+    },
+    {
+      "id": "n_f2_S1",
+      "floorId": "f2",
+      "x": 53.77,
+      "y": 25.7,
+      "kind": "stair"
+    },
+    {
+      "id": "n_f2_S2",
+      "floorId": "f2",
+      "x": 28.19,
+      "y": 26.6,
+      "kind": "stair"
+    },
+    {
+      "id": "n_f2_SJT209",
+      "floorId": "f2",
+      "x": 65.09,
+      "y": 18.23,
+      "kind": "room"
+    },
+    {
+      "id": "n_f2_SJT214",
+      "floorId": "f2",
+      "x": 19.47,
+      "y": 20.6,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT323",
+      "floorId": "f3",
+      "x": 26.77,
+      "y": 78.65,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT324",
+      "floorId": "f3",
+      "x": 43.99,
+      "y": 80.08,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT301",
+      "floorId": "f3",
+      "x": 52.59,
+      "y": 80.08,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT302",
+      "floorId": "f3",
+      "x": 62.99,
+      "y": 80.8,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT303",
+      "floorId": "f3",
+      "x": 72.91,
+      "y": 81.28,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT304",
+      "floorId": "f3",
+      "x": 72.79,
+      "y": 74.11,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT305",
+      "floorId": "f3",
+      "x": 62.51,
+      "y": 73.75,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT307",
+      "floorId": "f3",
+      "x": 56.77,
+      "y": 43.99,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT308",
+      "floorId": "f3",
+      "x": 66.1,
+      "y": 41.83,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT309",
+      "floorId": "f3",
+      "x": 67.65,
+      "y": 21.75,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT311",
+      "floorId": "f3",
+      "x": 54.03,
+      "y": 31.55,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT311A",
+      "floorId": "f3",
+      "x": 44.34,
+      "y": 42.43,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT315",
+      "floorId": "f3",
+      "x": 18.29,
+      "y": 39.92,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT314",
+      "floorId": "f3",
+      "x": 19.0,
+      "y": 21.16,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT312",
+      "floorId": "f3",
+      "x": 39.09,
+      "y": 41.83,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT316",
+      "floorId": "f3",
+      "x": 23.91,
+      "y": 55.46,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT319",
+      "floorId": "f3",
+      "x": 23.55,
+      "y": 57.97,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT318",
+      "floorId": "f3",
+      "x": 8.73,
+      "y": 57.49,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_SJT317",
+      "floorId": "f3",
+      "x": 9.08,
+      "y": 54.74,
+      "kind": "room"
+    },
+    {
+      "id": "n_f3_LJ1",
+      "floorId": "f3",
+      "x": 39.2,
+      "y": 71.12,
+      "kind": "junction"
+    },
+    {
+      "id": "n_f3_LJ2",
+      "floorId": "f3",
+      "x": 41.12,
+      "y": 46.5,
+      "kind": "junction"
+    },
+    {
+      "id": "n_f3_LJ3",
+      "floorId": "f3",
+      "x": 76.74,
+      "y": 77.93,
+      "kind": "junction"
+    },
+    {
+      "id": "n_f3_L1",
+      "floorId": "f3",
+      "x": 19.48,
+      "y": 74.94,
+      "kind": "elevator"
+    },
+    {
+      "id": "n_f3_S1",
+      "floorId": "f3",
+      "x": 57.37,
+      "y": 28.69,
+      "kind": "stair"
+    },
+    {
+      "id": "n_f3_S2",
+      "floorId": "f3",
+      "x": 28.69,
+      "y": 28.45,
+      "kind": "stair"
+    },
     {
       "id": "n_f4_SJT421",
       "floorId": "f4",
@@ -4562,6 +7121,414 @@
     }
   ],
   "edges": [
+    {
+      "a": "n_f2_S1",
+      "b": "n_f2_SJT209",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT209",
+      "b": "n_f2_SJT208",
+      "kind": "corridor",
+      "lengthM": 20.3,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT209",
+      "b": "n_f2_SJT207A",
+      "kind": "corridor",
+      "lengthM": 24.91,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT209",
+      "b": "n_f2_LJ3",
+      "kind": "corridor",
+      "lengthM": 56.03,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_LJ3",
+      "b": "n_f2_SJT214",
+      "kind": "corridor",
+      "lengthM": 75.41,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT214",
+      "b": "n_f2_S2",
+      "kind": "corridor",
+      "lengthM": 10.58,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT214",
+      "b": "n_f2_SJT215",
+      "kind": "corridor",
+      "lengthM": 18.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_LJ3",
+      "b": "n_f2_SJT216",
+      "kind": "corridor",
+      "lengthM": 53.13,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT216",
+      "b": "n_f2_SJT219",
+      "kind": "corridor",
+      "lengthM": 3.75,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT219",
+      "b": "n_f2_SJT218",
+      "kind": "corridor",
+      "lengthM": 13.36,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT218",
+      "b": "n_f2_SJT217",
+      "kind": "corridor",
+      "lengthM": 3.75,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT216",
+      "b": "n_f2_L1",
+      "kind": "corridor",
+      "lengthM": 26.25,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_L1",
+      "b": "n_f2_SJT223",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT223",
+      "b": "n_f2_SJT224",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT224",
+      "b": "n_f2_SJT201",
+      "kind": "corridor",
+      "lengthM": 15.38,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT201",
+      "b": "n_f2_SJT202",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT202",
+      "b": "n_f2_SJT203",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT202",
+      "b": "n_f2_SJT205",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT205",
+      "b": "n_f2_SJT204",
+      "kind": "corridor",
+      "lengthM": 10.45,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT204",
+      "b": "n_f2_LJ3",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT223",
+      "b": "n_f2_LJ1",
+      "kind": "corridor",
+      "lengthM": 12.26,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT209",
+      "b": "n_f2_SJT211A",
+      "kind": "corridor",
+      "lengthM": 16.66,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT211A",
+      "b": "n_f2_SJT211",
+      "kind": "corridor",
+      "lengthM": 15.09,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT211",
+      "b": "n_f2_LJ2",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_LJ2",
+      "b": "n_f2_SJT212",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_SJT201",
+      "b": "n_f2_SJT207",
+      "kind": "corridor",
+      "lengthM": 30.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_S1",
+      "b": "n_f3_SJT309",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT309",
+      "b": "n_f3_SJT308",
+      "kind": "corridor",
+      "lengthM": 20.14,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT309",
+      "b": "n_f3_SJT307",
+      "kind": "corridor",
+      "lengthM": 24.75,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT309",
+      "b": "n_f3_LJ3",
+      "kind": "corridor",
+      "lengthM": 56.91,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_LJ3",
+      "b": "n_f3_SJT314",
+      "kind": "corridor",
+      "lengthM": 80.97,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT314",
+      "b": "n_f3_S2",
+      "kind": "corridor",
+      "lengthM": 12.12,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT314",
+      "b": "n_f3_SJT315",
+      "kind": "corridor",
+      "lengthM": 18.78,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_LJ3",
+      "b": "n_f3_SJT316",
+      "kind": "corridor",
+      "lengthM": 57.41,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT316",
+      "b": "n_f3_SJT319",
+      "kind": "corridor",
+      "lengthM": 3.75,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT319",
+      "b": "n_f3_SJT318",
+      "kind": "corridor",
+      "lengthM": 14.83,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT318",
+      "b": "n_f3_SJT317",
+      "kind": "corridor",
+      "lengthM": 3.75,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT316",
+      "b": "n_f3_L1",
+      "kind": "corridor",
+      "lengthM": 26.25,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_L1",
+      "b": "n_f3_SJT323",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT323",
+      "b": "n_f3_SJT324",
+      "kind": "corridor",
+      "lengthM": 17.27,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT324",
+      "b": "n_f3_SJT301",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT301",
+      "b": "n_f3_SJT302",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT302",
+      "b": "n_f3_SJT303",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT302",
+      "b": "n_f3_SJT305",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT305",
+      "b": "n_f3_SJT304",
+      "kind": "corridor",
+      "lengthM": 10.29,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT304",
+      "b": "n_f3_LJ3",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT323",
+      "b": "n_f3_LJ1",
+      "kind": "corridor",
+      "lengthM": 14.53,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT309",
+      "b": "n_f3_SJT311",
+      "kind": "corridor",
+      "lengthM": 16.78,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT311",
+      "b": "n_f3_SJT311A",
+      "kind": "corridor",
+      "lengthM": 14.56,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_SJT311A",
+      "b": "n_f3_LJ2",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_LJ2",
+      "b": "n_f3_SJT312",
+      "kind": "corridor",
+      "lengthM": 7.5,
+      "accessible": true,
+      "bidirectional": true
+    },
     {
       "a": "n_f4_S1",
       "b": "n_f4_SJT410",
@@ -5267,6 +8234,22 @@
       "bidirectional": true
     },
     {
+      "a": "n_f2_L1",
+      "b": "n_f3_L1",
+      "kind": "elevator",
+      "lengthM": 6.56,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_L1",
+      "b": "n_f4_L1",
+      "kind": "elevator",
+      "lengthM": 8.04,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
       "a": "n_f4_L1",
       "b": "n_f5_L1",
       "kind": "elevator",
@@ -5291,6 +8274,22 @@
       "bidirectional": true
     },
     {
+      "a": "n_f2_S1",
+      "b": "n_f3_S1",
+      "kind": "stair",
+      "lengthM": 5.84,
+      "accessible": false,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_S1",
+      "b": "n_f4_S1",
+      "kind": "stair",
+      "lengthM": 11.37,
+      "accessible": false,
+      "bidirectional": true
+    },
+    {
       "a": "n_f4_S1",
       "b": "n_f5_S1",
       "kind": "stair",
@@ -5311,6 +8310,22 @@
       "b": "n_f8_S1",
       "kind": "stair",
       "lengthM": 12.39,
+      "accessible": false,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f2_S2",
+      "b": "n_f3_S2",
+      "kind": "stair",
+      "lengthM": 4.5,
+      "accessible": false,
+      "bidirectional": true
+    },
+    {
+      "a": "n_f3_S2",
+      "b": "n_f4_S2",
+      "kind": "stair",
+      "lengthM": 9.69,
       "accessible": false,
       "bidirectional": true
     },
