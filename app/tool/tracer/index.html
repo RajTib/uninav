@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!--
+  UniNav Floor Tracer
+  ===================
+  Open this file in a browser. No install, no server, no dependencies.
+
+  WHY THIS EXISTS
+  Room shapes and node positions were previously estimated by eye from a photo
+  of the floor plan, and everything downstream inherited that error. This tool
+  replaces guessing with clicking: you trace directly on the real plan image
+  and it emits exact pixel coordinates in the survey format.
+
+  THREE THINGS YOU TRACE
+    1. Rooms      - drag a rectangle around each room
+    2. Nodes      - click the point where you actually walk (a doorway)
+    3. Corridors  - click along a corridor to trace its shape
+
+  Corridors are VISUAL ONLY. They do not change routing: the graph edges and
+  their paced weights stay exactly as surveyed. This is deliberate — routing
+  truth (what you paced) and drawing truth (what the corridor looks like) are
+  different things, and conflating them is what made straight lines cut
+  diagonally across the building.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UniNav Floor Tracer</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; display: flex; height: 100vh; font: 13px/1.5 system-ui, sans-serif;
+    background: #16171b; color: #e7e7ea;
+  }
+  #side {
+    width: 340px; flex: none; padding: 14px; overflow-y: auto;
+    background: #1e2026; border-right: 1px solid #2e3039;
+  }
+  #stage { flex: 1; overflow: auto; position: relative; background: #0f1013; }
+  canvas { display: block; cursor: crosshair; }
+  h1 { font-size: 15px; margin: 0 0 4px; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+       color: #8b8f9c; margin: 18px 0 6px; }
+  button {
+    font: inherit; padding: 7px 10px; margin: 0 4px 4px 0; cursor: pointer;
+    background: #2b2e37; color: #e7e7ea; border: 1px solid #3a3d47;
+    border-radius: 6px;
+  }
+  button:hover { background: #343843; }
+  button.on { background: #4d5bd4; border-color: #6673e8; }
+  button.danger { background: #5a2530; border-color: #7a3040; }
+  input, select, textarea {
+    font: inherit; width: 100%; padding: 6px 8px; margin-bottom: 6px;
+    background: #14151a; color: #e7e7ea; border: 1px solid #3a3d47;
+    border-radius: 6px;
+  }
+  textarea { height: 190px; font-family: ui-monospace, monospace; font-size: 11px; }
+  .row { display: flex; gap: 6px; }
+  .hint { color: #8b8f9c; font-size: 12px; margin: 6px 0; }
+  ul { list-style: none; margin: 0; padding: 0; max-height: 220px; overflow-y: auto; }
+  li { display: flex; justify-content: space-between; align-items: center;
+       padding: 4px 6px; border-radius: 5px; }
+  li:nth-child(odd) { background: #24262e; }
+  li button { padding: 1px 7px; margin: 0; font-size: 12px; }
+  kbd { background: #2b2e37; border: 1px solid #3a3d47; border-radius: 4px;
+        padding: 1px 5px; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<div id="side">
+  <h1>UniNav Floor Tracer</h1>
+  <div class="hint">Trace on the real plan. Output is exact pixel coordinates.</div>
+
+  <h2>1. Load</h2>
+  <input type="file" id="img" accept="image/*">
+  <div class="hint">Pick <code>8th floor.png</code></div>
+  <input type="file" id="existing" accept=".json">
+  <div class="hint">Optional: load your existing <code>floor_8.json</code> to keep IDs, edges and weights.</div>
+
+  <h2>2. Mode</h2>
+  <button id="mRoom" class="on">Room (polygon)</button>
+  <button id="mNode">Node (click)</button>
+  <button id="mCorr">Corridor (click…)</button>
+  <div class="hint" id="modeHelp"></div>
+
+  <h2>Corridor width</h2>
+  <div class="row">
+    <input type="range" id="cw" min="1" max="6" step="0.25" value="2.5">
+    <span id="cwv" style="white-space:nowrap">2.5 m</span>
+  </div>
+  <div class="hint">Trace the centreline only — this is how wide it paints.</div>
+
+  <h2>3. Details (fill BEFORE tracing)</h2>
+  <input id="id" placeholder="ID  e.g. SJT810">
+  <input id="name" placeholder="Display name  e.g. Classroom 810">
+  <input id="aliases" placeholder="Aliases, comma-separated  e.g. 810, Seminar Hall">
+  <select id="kind">
+    <option value="classroom">classroom</option>
+    <option value="lab">lab</option>
+    <option value="room">room</option>
+    <option value="office">office</option>
+    <option value="gallery">gallery</option>
+    <option value="radio_station">radio_station</option>
+    <option value="toilet_male">toilet_male</option>
+    <option value="toilet_female">toilet_female</option>
+    <option value="staircase">staircase</option>
+    <option value="lift">lift</option>
+    <option value="lift_junction">lift_junction</option>
+    <option value="entrance">entrance</option>
+  </select>
+  <div class="hint">
+    <kbd>Enter</kbd> finish corridor · <kbd>Esc</kbd> cancel · <kbd>Ctrl</kbd>+<kbd>Z</kbd> undo
+  </div>
+
+  <h2>Traced</h2>
+  <ul id="list"></ul>
+  <button id="clear" class="danger">Clear all</button>
+
+  <h2>4. Output</h2>
+  <div class="row">
+    <button id="copy">Copy JSON</button>
+    <button id="save">Download</button>
+  </div>
+  <textarea id="out" readonly></textarea>
+</div>
+
+<div id="stage"><canvas id="c"></canvas></div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const cv = $('c'), ctx = cv.getContext('2d');
+
+  let img = null;
+  // Everything traced. `meta` holds the original file's edges/weights so a
+  // re-trace never loses the paced survey data.
+  let rooms = [], nodes = [], corridors = [], meta = null;
+  let mode = 'room', drag = null, pending = [];
+  let corridorWidth = 2.5;
+
+  // Plan pixels per metre. Derived from the survey's own edge weights when
+  // available (same method the Dart converter uses), so the tracer's idea of
+  // "2.5 m wide" matches the app's exactly.
+  const pxPerMetre = () => {
+    const e = meta?.edges || [], n = {};
+    for (const x of meta?.nodes || []) n[x.id] = x;
+    const r = [];
+    for (const ed of e) {
+      const a = n[ed.from], b = n[ed.to];
+      if (!a || !b || a.x == null || b.x == null || !ed.weight) continue;
+      r.push(Math.hypot(a.x - b.x, a.y - b.y) / (ed.weight * 0.75));
+    }
+    if (!r.length) return 7.3; // sane default until a survey is loaded
+    r.sort((x, y) => x - y);
+    return r[r.length >> 1];
+  };
+
+  $('cw').oninput = e => {
+    corridorWidth = parseFloat(e.target.value);
+    $('cwv').textContent = corridorWidth.toFixed(2) + ' m';
+    draw();
+  };
+
+  const KIND_COLOR = {
+    classroom: '#5b6cc4', lab: '#a4557a', room: '#6b7280', office: '#3f8f7f',
+    gallery: '#9a7bc8', radio_station: '#c08a3e', toilet_male: '#4a8fb5',
+    toilet_female: '#b5588f', staircase: '#d08b30', lift: '#39a06a',
+    lift_junction: '#7a8090', entrance: '#3fa34d'
+  };
+
+  // ---------- image + existing data ----------
+  $('img').onchange = e => {
+    const f = e.target.files[0]; if (!f) return;
+    const i = new Image();
+    i.onload = () => { img = i; cv.width = i.width; cv.height = i.height; draw(); };
+    i.src = URL.createObjectURL(f);
+  };
+
+  $('existing').onchange = e => {
+    const f = e.target.files[0]; if (!f) return;
+    f.text().then(t => {
+      const d = JSON.parse(t);
+      meta = d;
+      rooms = []; nodes = []; corridors = d.corridors || [];
+      for (const n of d.nodes || []) {
+        const common = { id: n.id, name: n.displayName, kind: n.kind, aliases: n.aliases || [] };
+        // Prefer an existing polygon; fall back to converting old rect bounds.
+        if (n.polygon) rooms.push({ ...common, poly: n.polygon });
+        else if (n.bounds) {
+          const [x1,y1,x2,y2] = n.bounds;
+          rooms.push({ ...common, poly: [[x1,y1],[x2,y1],[x2,y2],[x1,y2]] });
+        }
+        if (n.x != null) nodes.push({ ...common, x: n.x, y: n.y });
+      }
+      refresh();
+      alert(`Loaded ${nodes.length} nodes, ${rooms.length} room boxes, ` +
+            `${(d.edges || []).length} edges (edges + weights preserved).`);
+    });
+  };
+
+  // ---------- modes ----------
+  const HELP = {
+    room: 'Fill ID + kind above, then click each corner of the room. ' +
+          'Enter (or click the first point) to close it.',
+    node: 'Fill ID + kind above, then click the doorway — where you walk in.',
+    corridor: 'Click along the corridor centreline. Enter to finish, Esc cancels.'
+  };
+  const setMode = m => {
+    mode = m; pending = [];
+    for (const [k, b] of [['room','mRoom'],['node','mNode'],['corridor','mCorr']]) {
+      $(b).classList.toggle('on', k === m);
+    }
+    $('modeHelp').textContent = HELP[m];
+    draw();
+  };
+  $('mRoom').onclick = () => setMode('room');
+  $('mNode').onclick = () => setMode('node');
+  $('mCorr').onclick = () => setMode('corridor');
+
+  // ---------- canvas coords ----------
+  const at = e => {
+    const r = cv.getBoundingClientRect();
+    return {
+      x: Math.round((e.clientX - r.left) * cv.width / r.width),
+      y: Math.round((e.clientY - r.top) * cv.height / r.height)
+    };
+  };
+
+  cv.onmousemove = e => {
+    if (pending.length) draw(at(e));   // rubber-band for room + corridor
+  };
+
+  cv.onclick = e => {
+    const p = at(e);
+    if (mode === 'node') {
+      const id = ask(); if (!id) return;
+      nodes = nodes.filter(n => n.id !== id);
+      nodes.push({ id, ...details(), x: p.x, y: p.y });
+      clearInputs(); refresh();
+    } else if (mode === 'room' || mode === 'corridor') {
+      // Clicking the first point again (or near it) closes a room polygon.
+      if (mode === 'room' && pending.length >= 3 && near(p, pending[0])) {
+        finishRoom();
+      } else {
+        pending.push([p.x, p.y]); draw();
+      }
+    }
+  };
+
+  const near = (a, b) => Math.hypot(a.x - b[0], a.y - b[1]) < 10;
+
+  function finishRoom() {
+    if (pending.length < 3) { pending = []; draw(); return; }
+    const id = ask(); if (!id) { pending = []; draw(); return; }
+    rooms = rooms.filter(r => r.id !== id);         // re-tracing replaces
+    rooms.push({ id, ...details(), poly: pending });
+    pending = []; clearInputs(); refresh();
+  }
+
+  // All the metadata a room/node carries. `kind` drives colour, search type,
+  // and whether it also becomes a POI (a washroom, etc.).
+  const details = () => ({
+    name: $('name').value.trim() || $('id').value.trim(),
+    kind: $('kind').value,
+    aliases: $('aliases').value.split(',').map(s => s.trim()).filter(Boolean)
+  });
+  const ask = () => $('id').value.trim() || (prompt('ID?') || '').trim();
+  const clearInputs = () => { $('id').value = ''; $('name').value = ''; $('aliases').value = ''; };
+
+  document.onkeydown = e => {
+    if (e.key === 'Enter') {
+      if (mode === 'room' && pending.length >= 3) finishRoom();
+      else if (mode === 'corridor' && pending.length > 1) {
+        corridors.push(pending); pending = []; refresh();
+      }
+    } else if (e.key === 'Escape') { pending = []; draw(); }
+    else if (e.key === 'z' && (e.ctrlKey || e.metaKey)) {
+      if (pending.length) pending.pop();
+      else if (corridors.length) corridors.pop();
+      else if (nodes.length) nodes.pop();
+      else if (rooms.length) rooms.pop();
+      refresh();
+    }
+  };
+
+  $('clear').onclick = () => {
+    if (confirm('Clear every traced room, node and corridor?')) {
+      rooms = []; nodes = []; corridors = []; pending = []; refresh();
+    }
+  };
+
+  // ---------- drawing ----------
+  function draw(hover) {
+    if (!img) return;
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    ctx.drawImage(img, 0, 0);
+
+    for (const r of rooms) {
+      const c = KIND_COLOR[r.kind] || '#6b7280';
+      poly(r.poly, c + '55', c);
+      const [lx, ly] = centroid(r.poly);
+      label(r.id, lx - 12, ly, c);
+    }
+
+    // Corridors are drawn at their REAL width, so what you trace is what the
+    // app paints. You click the centreline only; the width comes from the
+    // slider. A thin bright line marks the centre so corners stay clickable.
+    const wPx = corridorWidth * pxPerMetre();
+    ctx.lineJoin = ctx.lineCap = 'round';
+    for (const path of corridors) {
+      ctx.strokeStyle = 'rgba(57,217,138,.30)'; ctx.lineWidth = wPx;
+      stroke(path);
+      ctx.strokeStyle = '#39d98a'; ctx.lineWidth = 1.5;
+      stroke(path);
+    }
+    if (pending.length) {
+      const live = hover ? [...pending, [hover.x, hover.y]] : pending;
+      ctx.strokeStyle = 'rgba(255,209,102,.30)'; ctx.lineWidth = wPx;
+      stroke(live);
+      ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 1.5;
+      stroke(live);
+      for (const [x,y] of pending) dot(x, y, '#ffd166', 4);
+    }
+
+    for (const n of nodes) {
+      dot(n.x, n.y, KIND_COLOR[n.kind] || '#fff', 6);
+      label(n.id, n.x + 9, n.y + 4, '#fff');
+    }
+
+    // Room polygon in progress: draw the edges so far, plus a dashed line to
+    // the cursor and a highlight on the first point (click it to close).
+    if (mode === 'room' && pending.length) {
+      const c = KIND_COLOR[$('kind').value] || '#fff';
+      ctx.strokeStyle = c; ctx.lineWidth = 2;
+      stroke(hover ? [...pending, [hover.x, hover.y]] : pending);
+      for (const [x,y] of pending) dot(x, y, c, 4);
+      dot(pending[0][0], pending[0][1], '#fff', 6); // closeable start point
+    }
+  }
+  const poly = (pts, fill, edge) => {
+    if (!pts || pts.length < 2) return;
+    ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+    for (const [x,y] of pts.slice(1)) ctx.lineTo(x, y);
+    ctx.closePath();
+    ctx.fillStyle = fill; ctx.fill();
+    ctx.strokeStyle = edge; ctx.lineWidth = 2; ctx.stroke();
+  };
+  const centroid = pts => {
+    let x = 0, y = 0;
+    for (const [px, py] of pts) { x += px; y += py; }
+    return [x / pts.length, y / pts.length];
+  };
+  const stroke = pts => {
+    ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+    for (const [x,y] of pts.slice(1)) ctx.lineTo(x, y);
+    ctx.stroke();
+  };
+  const dot = (x, y, c, r) => {
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7);
+    ctx.fillStyle = c; ctx.fill();
+    ctx.strokeStyle = '#000'; ctx.lineWidth = 1.5; ctx.stroke();
+  };
+  const label = (t, x, y, c) => {
+    ctx.font = 'bold 11px system-ui';
+    ctx.strokeStyle = 'rgba(0,0,0,.85)'; ctx.lineWidth = 3;
+    ctx.strokeText(t, x, y);
+    ctx.fillStyle = c; ctx.fillText(t, x, y);
+  };
+
+  // ---------- list + output ----------
+  function refresh() {
+    const ul = $('list'); ul.innerHTML = '';
+    const add = (text, del) => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      const b = document.createElement('button');
+      b.textContent = '×'; b.onclick = () => { del(); refresh(); };
+      li.appendChild(b); ul.appendChild(li);
+    };
+    rooms.forEach((r,i) => add('▭ ' + r.id, () => rooms.splice(i,1)));
+    nodes.forEach((n,i) => add('● ' + n.id, () => nodes.splice(i,1)));
+    corridors.forEach((c,i) => add(`— corridor (${c.length} pts)`, () => corridors.splice(i,1)));
+    $('out').value = JSON.stringify(build(), null, 4);
+    draw();
+  }
+
+  // Merges traced geometry back into the survey file, preserving edges and
+  // paced weights — those came from walking the building and must survive.
+  function build() {
+    const byId = {};
+    for (const n of nodes) byId[n.id] = { ...n };
+    for (const r of rooms) byId[r.id] = { ...(byId[r.id] || {}), ...r };
+
+    const out = [];
+    for (const id of Object.keys(byId)) {
+      const v = byId[id];
+      const prev = (meta?.nodes || []).find(n => n.id === id) || {};
+      const aliases = (v.aliases && v.aliases.length) ? v.aliases
+        : (prev.aliases || [id.replace(/^SJT/, '')]);
+      out.push({
+        id,
+        kind: v.kind || prev.kind || 'room',
+        displayName: v.name || prev.displayName || id,
+        aliases,
+        x: v.x != null ? v.x : prev.x ?? null,
+        y: v.y != null ? v.y : prev.y ?? null,
+        ...(v.poly ? { polygon: v.poly } : (prev.polygon ? { polygon: prev.polygon } : {}))
+      });
+    }
+    // Keep any nodes from the original file that were not re-traced.
+    for (const n of (meta?.nodes || [])) if (!byId[n.id]) out.push(n);
+
+    return {
+      building: meta?.building || 'SJT',
+      floor: meta?.floor ?? 8,
+      image: {
+        file: meta?.image?.file || '8th floor.png',
+        width: img ? img.width : (meta?.image?.width ?? 0),
+        height: img ? img.height : (meta?.image?.height ?? 0)
+      },
+      nodes: out,
+      edges: meta?.edges || [],
+      corridors,
+      corridorWidthM: corridorWidth
+    };
+  }
+
+  $('copy').onclick = () => {
+    navigator.clipboard.writeText($('out').value);
+    $('copy').textContent = 'Copied ✓';
+    setTimeout(() => $('copy').textContent = 'Copy JSON', 1200);
+  };
+  $('save').onclick = () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([$('out').value], { type: 'application/json' }));
+    a.download = 'floor_8.json'; a.click();
+  };
+
+  refresh();
+})();
+</script>
+</body>
+</html>

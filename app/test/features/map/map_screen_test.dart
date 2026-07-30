@@ -40,6 +40,15 @@ void main() {
 
   const canvas = ValueKey('map-canvas');
 
+  /// Current zoom, read from the live [InteractiveViewer]. Floors are fit
+  /// to their content on first open (docs/15-known-issues.md), so the
+  /// camera doesn't start at 1:1 — screen-space math has to scale for it.
+  double scaleOf(WidgetTester tester) => tester
+      .widget<InteractiveViewer>(find.byType(InteractiveViewer))
+      .transformationController!
+      .value
+      .getMaxScaleOnAxis();
+
   testWidgets('renders floors and switches between them', (tester) async {
     await tester.pumpWidget(harness());
     await settle(tester);
@@ -95,8 +104,13 @@ void main() {
       await settle(tester);
 
       final viewport = tester.getRect(find.byType(InteractiveViewer));
-      final roomScreenPoint =
-          tester.getTopLeft(find.byKey(canvas)) + const Offset(100, 100);
+      // Fitting the floor to content (docs/15-known-issues.md) may leave the
+      // camera at a non-1:1 zoom before this selection ever happens, so a
+      // 100 content-px offset from the canvas's (already-transformed) origin
+      // is `100 * scale` screen px, not a raw 100.
+      final scale = scaleOf(tester);
+      final roomScreenPoint = tester.getTopLeft(find.byKey(canvas)) +
+          const Offset(100, 100) * scale;
 
       expect(roomScreenPoint.dx, closeTo(viewport.center.dx, 1));
       expect(roomScreenPoint.dy, closeTo(viewport.center.dy, 1));
@@ -140,8 +154,9 @@ void main() {
       await settle(tester);
 
       final viewport = tester.getRect(find.byType(InteractiveViewer));
-      final routeStartScreenPoint =
-          tester.getTopLeft(find.byKey(canvas)) + const Offset(300, 100);
+      final scale = scaleOf(tester);
+      final routeStartScreenPoint = tester.getTopLeft(find.byKey(canvas)) +
+          const Offset(300, 100) * scale;
 
       expect(routeStartScreenPoint.dx, closeTo(viewport.center.dx, 1));
       expect(routeStartScreenPoint.dy, closeTo(viewport.center.dy, 1));

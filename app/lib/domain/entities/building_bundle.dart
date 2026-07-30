@@ -57,6 +57,9 @@ final class Floor {
     required this.widthM,
     required this.heightM,
     this.planImagePath,
+    this.sourcePxPerMetre,
+    this.corridors = const [],
+    this.corridorWidthM = 2.5,
   });
 
   final String id;
@@ -69,6 +72,25 @@ final class Floor {
 
   /// Optional raster underlay (docs/05-map-representation.md, hybrid option).
   final String? planImagePath;
+
+  /// How many pixels of the ORIGINAL survey/plan image make one metre.
+  /// Recorded so authoring tools can display a grid labelled in the same
+  /// coordinates the surveyor edits (plan pixels), rather than in metres —
+  /// otherwise "move this box left" means converting units by hand.
+  /// Null for bundles not derived from a plan image.
+  final double? sourcePxPerMetre;
+
+  /// Traced corridor shapes for DRAWING only — each is a polyline in metres.
+  /// Routing ignores these entirely and uses the navigation graph, because
+  /// how a corridor looks and how far you walk down it are separate facts.
+  /// Empty when a floor has been surveyed but not traced.
+  final List<List<Point2>> corridors;
+
+  /// How wide corridors actually are, in metres. Only the CENTRELINE is
+  /// traced; stroking it at this width paints the corridor as a walkable
+  /// area. That is half the clicks of outlining both walls, and corner
+  /// joins come out correct automatically.
+  final double corridorWidthM;
 }
 
 final class Room {
@@ -110,6 +132,11 @@ enum RoomType {
   washroom,
   cafeteria,
   utility,
+
+  /// A lift/stair lobby: a walkable space in its own right (people stand and
+  /// pass through it), not just a corridor endpoint. Structurally like a
+  /// corridor — same fill style — but it is a bounded room, not a line.
+  junction,
   other,
 }
 

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import '../../../domain/entities/building_bundle.dart';
 import '../../../domain/entities/geometry.dart';
+import '../../../domain/entities/nav.dart';
 import '../../../domain/services/geometry/polygon_utils.dart';
 import '../../../domain/services/routing/route.dart';
 
@@ -16,6 +17,9 @@ final class FloorScene {
     required this.pxPerMeter,
     required this.rooms,
     required this.pois,
+    required this.markers,
+    required this.corridors,
+    required this.contentBounds,
     required this.routePaths,
     required this.routeStart,
     required this.routeEnd,
@@ -56,12 +60,75 @@ final class FloorScene {
         if (poi.floorId == floorId) ScenePoi(poi: poi, center: toPx(poi.point)),
     ];
 
+    // Vertical-transport nodes get a proper map symbol (stairs / lift icon)
+    // instead of an anonymous dot. These are the landmarks people navigate by
+    // ("meet me at the lift"), so they must read at a glance.
+    final markers = [
+      for (final node in bundle.nodes)
+        if (node.floorId == floorId &&
+            const {
+              NodeKind.stair,
+              NodeKind.elevator,
+              NodeKind.ramp,
+              NodeKind.entrance,
+              NodeKind.exit,
+            }.contains(node.kind))
+          SceneMarker(kind: node.kind, center: toPx(node.point)),
+    ];
+
+    // The walkable graph, drawn as corridor lines. Without these the map is
+    // just disconnected dots floating in space — the edges are what make it
+    // read as a floor plan. They are already in the data (routing uses them);
+    // this simply makes them visible.
+    final nodePos = <String, Offset>{
+      for (final node in bundle.nodes)
+        if (node.floorId == floorId) node.id: toPx(node.point),
+    };
+    final corridors = <SceneCorridor>[];
+    if (floor.corridors.isNotEmpty) {
+      // Traced corridor shapes: use them, and do NOT also draw graph edges.
+      // A graph edge says "A connects to B in N steps" — drawn literally it
+      // becomes a straight line that can cut diagonally across the building.
+      // The traced polyline is what the corridor actually looks like.
+      for (final path in floor.corridors) {
+        for (var i = 1; i < path.length; i++) {
+          corridors.add(
+            SceneCorridor(a: toPx(path[i - 1]), b: toPx(path[i]), edge: null),
+          );
+        }
+      }
+    } else {
+      // Not traced yet: fall back to drawing the graph, which is at least
+      // topologically honest even where it isn't geometrically pretty.
+      for (final edge in bundle.edges) {
+        final a = nodePos[edge.a];
+        final b = nodePos[edge.b];
+        // Skip edges leaving this floor (stairs/lifts): their endpoints live
+        // on another floor and a line to nowhere would be meaningless.
+        if (a == null || b == null) continue;
+        corridors.add(SceneCorridor(a: a, b: b, edge: edge));
+      }
+    }
+
+    // Bounds of everything actually drawn. A floor's declared size comes from
+    // its plan image, which is usually far larger than the surveyed area — so
+    // fitting the camera to the floor leaves the content as a small clump in
+    // an ocean of empty canvas. Fitting to *content* is what users expect.
+    final drawn = <Offset>[
+      ...nodePos.values,
+      for (final r in rooms) r.labelCenter,
+      for (final p in pois) p.center,
+    ];
+    final contentBounds = drawn.isEmpty
+        ? (Offset.zero & Size(floor.widthM * pxPerMeter, floor.heightM * pxPerMeter))
+        : _boundsOf(drawn).inflate(6 * pxPerMeter);
+
     // Route overlay: only this floor's segments become paths; whether this
     // floor hosts the overall start/end is decided from the full route.
     final routePaths = <Path>[];
     Offset? routeStart;
     Offset? routeEnd;
-    final markers = <TransitionMarker>[];
+    final transitionMarkers = <TransitionMarker>[];
     if (route != null && route.segments.isNotEmpty) {
       for (final segment in route.segments) {
         if (segment.floorId != floorId || segment.points.length < 2) continue;
@@ -84,7 +151,7 @@ final class FloorScene {
           // Departure marker sits at the end of the segment preceding the
           // transition (segments and transitions interleave 1:1).
           final seg = route.segments[i];
-          markers.add(
+          transitionMarkers.add(
             TransitionMarker(
               at: toPx(seg.points.last),
               transition: t,
@@ -94,7 +161,7 @@ final class FloorScene {
         }
         if (t.toFloorId == floorId) {
           final seg = route.segments[i + 1];
-          markers.add(
+          transitionMarkers.add(
             TransitionMarker(
               at: toPx(seg.points.first),
               transition: t,
@@ -110,10 +177,13 @@ final class FloorScene {
       pxPerMeter: pxPerMeter,
       rooms: List.unmodifiable(rooms),
       pois: List.unmodifiable(pois),
+      markers: List.unmodifiable(markers),
+      corridors: List.unmodifiable(corridors),
+      contentBounds: contentBounds,
       routePaths: List.unmodifiable(routePaths),
       routeStart: routeStart,
       routeEnd: routeEnd,
-      transitionMarkers: List.unmodifiable(markers),
+      transitionMarkers: List.unmodifiable(transitionMarkers),
     );
   }
 
@@ -125,6 +195,17 @@ final class FloorScene {
   final double pxPerMeter;
   final List<SceneRoom> rooms;
   final List<ScenePoi> pois;
+
+  /// Stairs, lifts, ramps and entrances — drawn as map symbols.
+  final List<SceneMarker> markers;
+
+  /// Walkable graph edges on this floor, drawn as corridor lines.
+  final List<SceneCorridor> corridors;
+
+  /// Rectangle enclosing everything drawn, plus padding. The camera fits to
+  /// this rather than to [sizePx] — see the comment at the construction site.
+  final Rect contentBounds;
+
   final List<Path> routePaths;
   final Offset? routeStart;
   final Offset? routeEnd;
@@ -149,6 +230,29 @@ final class FloorScene {
   }
 }
 
+Rect _boundsOf(List<Offset> points) {
+  var minX = points.first.dx, maxX = minX;
+  var minY = points.first.dy, maxY = minY;
+  for (final p in points) {
+    if (p.dx < minX) minX = p.dx;
+    if (p.dx > maxX) maxX = p.dx;
+    if (p.dy < minY) minY = p.dy;
+    if (p.dy > maxY) maxY = p.dy;
+  }
+  return Rect.fromLTRB(minX, minY, maxX, maxY);
+}
+
+/// One walkable connection, ready to draw.
+final class SceneCorridor {
+  const SceneCorridor({required this.a, required this.b, this.edge});
+  final Offset a;
+  final Offset b;
+
+  /// The graph edge this segment came from, when corridors were derived from
+  /// the graph. Null for traced corridor shapes, which have no single edge.
+  final NavEdge? edge;
+}
+
 final class SceneRoom {
   const SceneRoom({
     required this.room,
@@ -166,6 +270,13 @@ final class SceneRoom {
 final class ScenePoi {
   const ScenePoi({required this.poi, required this.center});
   final Poi poi;
+  final Offset center;
+}
+
+/// A vertical-transport or entrance node, drawn with a kind-specific icon.
+final class SceneMarker {
+  const SceneMarker({required this.kind, required this.center});
+  final NodeKind kind;
   final Offset center;
 }
 

@@ -1,0 +1,361 @@
+{
+    "building": "SJT",
+    "floor": 8,
+    "image": {
+        "file": "8th floor.png",
+        "width": 814,
+        "height": 835
+    },
+    "nodes": [
+        {
+            "id": "SJT823",
+            "kind": "classroom",
+            "displayName": "SJT823",
+            "aliases": [
+                "823"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                159,
+                722,
+                253,
+                816
+            ]
+        },
+        {
+            "id": "SJT824",
+            "kind": "classroom",
+            "displayName": "SJT824",
+            "aliases": [
+                "824"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                251,
+                702,
+                342,
+                798
+            ]
+        },
+        {
+            "id": "SJT825",
+            "kind": "classroom",
+            "displayName": "SJT825",
+            "aliases": [
+                "825"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                341,
+                702,
+                433,
+                796
+            ]
+        },
+        {
+            "id": "SJT801",
+            "kind": "classroom",
+            "displayName": "SJT801",
+            "aliases": [
+                "801"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                430,
+                698,
+                525,
+                798
+            ]
+        },
+        {
+            "id": "SJT802",
+            "kind": "classroom",
+            "displayName": "SJT802",
+            "aliases": [
+                "802"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                524,
+                697,
+                619,
+                814
+            ]
+        },
+        {
+            "id": "LJ3",
+            "kind": "classroom",
+            "displayName": "LJ3",
+            "aliases": [
+                "LJ3"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                722,
+                646,
+                775,
+                695
+            ]
+        },
+        {
+            "id": "SJT803",
+            "kind": "classroom",
+            "displayName": "SJT803",
+            "aliases": [
+                "803"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                614,
+                547,
+                715,
+                638
+            ]
+        },
+        {
+            "id": "SJT804",
+            "kind": "classroom",
+            "displayName": "SJT804",
+            "aliases": [
+                "804"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                523,
+                549,
+                615,
+                639
+            ]
+        },
+        {
+            "id": "SJT806",
+            "kind": "classroom",
+            "displayName": "SJT806",
+            "aliases": [
+                "806"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                522,
+                370,
+                667,
+                484
+            ]
+        },
+        {
+            "id": "SJT807",
+            "kind": "classroom",
+            "displayName": "SJT807",
+            "aliases": [
+                "807"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                615,
+                269,
+                713,
+                364
+            ]
+        },
+        {
+            "id": "SJT808",
+            "kind": "classroom",
+            "displayName": "SJT808",
+            "aliases": [
+                "808"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                627,
+                222,
+                713,
+                250
+            ]
+        },
+        {
+            "id": "SJT809",
+            "kind": "classroom",
+            "displayName": "SJT809",
+            "aliases": [
+                "809"
+            ],
+            "x": null,
+            "y": null,
+            "bounds": [
+                615,
+                156,
+                713,
+                220
+            ]
+        }
+    ],
+    "edges": [],
+    "corridors": [
+        [
+            [
+                167,
+                712
+            ],
+            [
+                238,
+                709
+            ],
+            [
+                226,
+                687
+            ],
+            [
+                224,
+                659
+            ],
+            [
+                275,
+                662
+            ],
+            [
+                256,
+                682
+            ],
+            [
+                708,
+                680
+            ],
+            [
+                705,
+                658
+            ],
+            [
+                501,
+                657
+            ],
+            [
+                502,
+                332
+            ],
+            [
+                526,
+                306
+            ],
+            [
+                516,
+                299
+            ],
+            [
+                515,
+                269
+            ],
+            [
+                543,
+                246
+            ],
+            [
+                613,
+                246
+            ],
+            [
+                590,
+                285
+            ],
+            [
+                560,
+                269
+            ],
+            [
+                543,
+                290
+            ],
+            [
+                563,
+                295
+            ],
+            [
+                595,
+                256
+            ],
+            [
+                600,
+                290
+            ],
+            [
+                609,
+                352
+            ],
+            [
+                596,
+                270
+            ],
+            [
+                513,
+                360
+            ],
+            [
+                487,
+                346
+            ],
+            [
+                435,
+                392
+            ],
+            [
+                483,
+                392
+            ],
+            [
+                270,
+                397
+            ],
+            [
+                315,
+                376
+            ],
+            [
+                270,
+                375
+            ],
+            [
+                273,
+                644
+            ],
+            [
+                273,
+                679
+            ],
+            [
+                481,
+                675
+            ]
+        ],
+        [
+            [
+                386,
+                679
+            ],
+            [
+                387,
+                616
+            ]
+        ],
+        [
+            [
+                384,
+                394
+            ],
+            [
+                386,
+                456
+            ]
+        ]
+    ],
+    "corridorWidthM": 6
+}

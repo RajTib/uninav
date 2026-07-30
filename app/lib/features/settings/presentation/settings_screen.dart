@@ -52,28 +52,34 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           const _SectionHeader('Routing'),
-          RadioListTile<RouteMode>(
-            value: RouteMode.fastest,
+          // Flutter 3.32 deprecated per-tile groupValue/onChanged in favour of
+          // a RadioGroup ancestor owning the selection for all its children.
+          // Each RadioListTile now only declares its own value.
+          RadioGroup<RouteMode>(
             groupValue: prefs.defaultRouteMode,
             onChanged: (m) => _setMode(ref, m),
-            title: const Text('Fastest'),
-            subtitle: const Text('Shortest walk, stairs allowed'),
-          ),
-          RadioListTile<RouteMode>(
-            value: RouteMode.accessible,
-            groupValue: prefs.defaultRouteMode,
-            onChanged: (m) => _setMode(ref, m),
-            title: const Text('Step-free (wheelchair)'),
-            subtitle: const Text(
-                'Never uses stairs; reports honestly when no step-free '
-                'route exists'),
-          ),
-          RadioListTile<RouteMode>(
-            value: RouteMode.preferLift,
-            groupValue: prefs.defaultRouteMode,
-            onChanged: (m) => _setMode(ref, m),
-            title: const Text('Prefer lift'),
-            subtitle: const Text('Stairs only when much faster'),
+            child: const Column(
+              children: [
+                RadioListTile<RouteMode>(
+                  value: RouteMode.fastest,
+                  title: Text('Fastest'),
+                  subtitle: Text('Shortest walk, stairs allowed'),
+                ),
+                RadioListTile<RouteMode>(
+                  value: RouteMode.accessible,
+                  title: Text('Step-free (wheelchair)'),
+                  subtitle: Text(
+                    'Never uses stairs; reports honestly when no step-free '
+                    'route exists',
+                  ),
+                ),
+                RadioListTile<RouteMode>(
+                  value: RouteMode.preferLift,
+                  title: Text('Prefer lift'),
+                  subtitle: Text('Stairs only when much faster'),
+                ),
+              ],
+            ),
           ),
           const _SectionHeader('Data'),
           ListTile(

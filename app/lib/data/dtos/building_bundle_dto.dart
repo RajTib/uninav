@@ -48,6 +48,14 @@ final class BuildingBundleDto {
               'widthM': f.widthM,
               'heightM': f.heightM,
               if (f.planImagePath != null) 'planImagePath': f.planImagePath,
+              if (f.sourcePxPerMetre != null)
+                'sourcePxPerMetre': f.sourcePxPerMetre,
+              'corridorWidthM': f.corridorWidthM,
+              if (f.corridors.isNotEmpty)
+                'corridors': [
+                  for (final path in f.corridors)
+                    [for (final p in path) [p.x, p.y]],
+                ],
             },
         ],
         'rooms': [
@@ -111,6 +119,12 @@ final class BuildingBundleDto {
         widthM: _double(j, 'widthM'),
         heightM: _double(j, 'heightM'),
         planImagePath: j['planImagePath'] as String?,
+        sourcePxPerMetre: (j['sourcePxPerMetre'] as num?)?.toDouble(),
+        corridors: [
+          for (final path in j['corridors'] as List<dynamic>? ?? const [])
+            _points({'p': path}, 'p'),
+        ],
+        corridorWidthM: (j['corridorWidthM'] as num?)?.toDouble() ?? 2.5,
       );
 
   static Room _room(Map<String, dynamic> j) => Room(

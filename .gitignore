@@ -25,3 +25,5 @@ desktop.ini
 # but repeat the big ones here so a stray build directory anywhere is ignored.
 build/
 .dart_tool/
+
+*.pdf

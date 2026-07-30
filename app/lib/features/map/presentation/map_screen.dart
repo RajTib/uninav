@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -52,6 +55,30 @@ class _MapScreenState extends ConsumerState<MapScreen>
   /// route instance), so a rebuild that doesn't change the target doesn't
   /// fight the user's manual pan/zoom every frame.
   Object? _lastAutoCenterTarget;
+
+  /// Floors already fitted to the viewport. A floor's declared size comes from
+  /// its plan image and is usually much larger than the surveyed area, so
+  /// opening at 1:1 shows a few markers adrift in empty canvas. Fitting once
+  /// per floor gives a sensible first view without overriding later panning.
+  final _fittedFloors = <String>{};
+
+  void _fitToContent(FloorScene scene) {
+    if (_viewportSize.isEmpty || !_fittedFloors.add(scene.floor.id)) return;
+    final bounds = scene.contentBounds;
+    if (bounds.isEmpty) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final scale = math.min(
+        _viewportSize.width / bounds.width,
+        _viewportSize.height / bounds.height,
+      ).clamp(0.3, 2.0);
+      final viewportCenter = _viewportSize.center(Offset.zero);
+      _transform.value = Matrix4.identity()
+        ..translateByDouble(viewportCenter.dx, viewportCenter.dy, 0, 1)
+        ..scaleByDouble(scale, scale, scale, 1)
+        ..translateByDouble(-bounds.center.dx, -bounds.center.dy, 0, 1);
+    });
+  }
 
   @override
   void initState() {
@@ -236,6 +263,7 @@ class _MapScreenState extends ConsumerState<MapScreen>
                       const Center(child: CircularProgressIndicator()),
                   error: (e, _) => Center(child: Text('Scene error: $e')),
                   data: (scene) {
+                    _fitToContent(scene);
                     _maybeAutoCenter(view, planner, scene);
                     return Stack(
                       children: [
@@ -262,6 +290,10 @@ class _MapScreenState extends ConsumerState<MapScreen>
                                         scene: scene,
                                         style: style,
                                         selectedRoomId: view.selectedRoomId,
+                                        // Authoring grid: debug builds only,
+                                        // so it cannot ship by accident.
+                                        // `flutter run --release` = no grid.
+                                        showGrid: kDebugMode,
                                         onRoomTap: _selectRoom,
                                         viewScale: _viewScale,
                                         scaleOf: () => _viewScale.value,

@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "buildingId": "SJT",
+  "buildingName": "Silver Jubilee Tower",
+  "version": 1,
+  "floors": [
+    {
+      "id": "f8",
+      "level": 8,
+      "name": "8th Floor",
+      "widthM": 101.54,
+      "heightM": 102.77,
+      "planImagePath": "floor_8.png",
+      "sourcePxPerMetre": 7.337
+    }
+  ],
+  "rooms": [
+    {
+      "id": "SJT801",
+      "floorId": "f8",
+      "name": "Classroom 801",
+      "type": "classroom",
+      "aliases": [
+        "801"
+      ],
+      "polygon": [
+        [
+          52.34,
+          88.32
+        ],
+        [
+          62.97,
+          88.32
+        ],
+        [
+          62.97,
+          98.41
+        ],
+        [
+          52.34,
+          98.41
+        ]
+      ],
+      "labelPoint": [
+        57.655,
+        93.365
+      ],
+      "nodeId": "n_SJT801",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT802",
+      "floorId": "f8",
+      "name": "Classroom 802",
+      "type": "classroom",
+      "aliases": [
+        "802"
+      ],
+      "polygon": [
+        [
+          63.52,
+          88.32
+        ],
+        [
+          76.33,
+          88.32
+        ],
+        [
+          76.33,
+          98.41
+        ],
+        [
+          63.52,
+          98.41
+        ]
+      ],
+      "labelPoint": [
+        69.925,
+        93.365
+      ],
+      "nodeId": "n_SJT802",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT803",
+      "floorId": "f8",
+      "name": "Classroom 803",
+      "type": "classroom",
+      "aliases": [
+        "803"
+      ],
+      "polygon": [
+        [
+          76.33,
+          67.88
+        ],
+        [
+          87.91,
+          67.88
+        ],
+        [
+          87.91,
+          76.6
+        ],
+        [
+          76.33,
+          76.6
+        ]
+      ],
+      "labelPoint": [
+        82.12,
+        72.24
+      ],
+      "nodeId": "n_SJT803",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT804",
+      "floorId": "f8",
+      "name": "FM Radio Station 804",
+      "type": "other",
+      "aliases": [
+        "804",
+        "FM Station",
+        "Radio Station"
+      ],
+      "polygon": [
+        [
+          68.42,
+          67.88
+        ],
+        [
+          75.78,
+          67.88
+        ],
+        [
+          75.78,
+          77.96
+        ],
+        [
+          68.42,
+          77.96
+        ]
+      ],
+      "labelPoint": [
+        72.1,
+        72.91999999999999
+      ],
+      "nodeId": "n_SJT804",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT806",
+      "floorId": "f8",
+      "name": "Cisco Lab 806",
+      "type": "lab",
+      "aliases": [
+        "806",
+        "Cisco",
+        "Cisco Lab"
+      ],
+      "polygon": [
+        [
+          68.42,
+          47.43
+        ],
+        [
+          87.91,
+          47.43
+        ],
+        [
+          87.91,
+          58.88
+        ],
+        [
+          68.42,
+          58.88
+        ]
+      ],
+      "labelPoint": [
+        78.16499999999999,
+        53.155
+      ],
+      "nodeId": "n_SJT806",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT807",
+      "floorId": "f8",
+      "name": "Classroom 807",
+      "type": "classroom",
+      "aliases": [
+        "807"
+      ],
+      "polygon": [
+        [
+          73.33,
+          35.17
+        ],
+        [
+          87.91,
+          35.17
+        ],
+        [
+          87.91,
+          43.89
+        ],
+        [
+          73.33,
+          43.89
+        ]
+      ],
+      "labelPoint": [
+        80.62,
+        39.53
+      ],
+      "nodeId": "n_SJT807",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT808",
+      "floorId": "f8",
+      "name": "Men's Toilet 808",
+      "type": "washroom",
+      "aliases": [
+        "808",
+        "Men's Toilet",
+        "Gents Toilet"
+      ],
+      "polygon": [
+        [
+          74.28,
+          26.99
+        ],
+        [
+          81.78,
+          26.99
+        ],
+        [
+          81.78,
+          32.71
+        ],
+        [
+          74.28,
+          32.71
+        ]
+      ],
+      "labelPoint": [
+        78.03,
+        29.85
+      ],
+      "nodeId": "n_SJT808",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT809",
+      "floorId": "f8",
+      "name": "Women's Toilet 809",
+      "type": "washroom",
+      "aliases": [
+        "809",
+        "Women's Toilet",
+        "Ladies Toilet"
+      ],
+      "polygon": [
+        [
+          75.24,
+          17.45
+        ],
+        [
+          89.28,
+          17.45
+        ],
+        [
+          89.28,
+          26.17
+        ],
+        [
+          75.24,
+          26.17
+        ]
+      ],
+      "labelPoint": [
+        82.25999999999999,
+        21.810000000000002
+      ],
+      "nodeId": "n_SJT809",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT811",
+      "floorId": "f8",
+      "name": "Bhagat Singh Gallery",
+      "type": "auditorium",
+      "aliases": [
+        "811",
+        "Bhagat Singh Gallery",
+        "Gallery"
+      ],
+      "polygon": [
+        [
+          38.16,
+          24.26
+        ],
+        [
+          57.25,
+          24.26
+        ],
+        [
+          57.25,
+          41.16
+        ],
+        [
+          38.16,
+          41.16
+        ]
+      ],
+      "labelPoint": [
+        47.705,
+        32.71
+      ],
+      "nodeId": "n_SJT811",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT820",
+      "floorId": "f8",
+      "name": "Room 820",
+      "type": "other",
+      "aliases": [
+        "820"
+      ],
+      "polygon": [
+        [
+          4.09,
+          46.07
+        ],
+        [
+          31.62,
+          46.07
+        ],
+        [
+          31.62,
+          64.06
+        ],
+        [
+          4.09,
+          64.06
+        ]
+      ],
+      "labelPoint": [
+        17.855,
+        55.065
+      ],
+      "nodeId": "n_SJT820",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT821",
+      "floorId": "f8",
+      "name": "Room 821",
+      "type": "other",
+      "aliases": [
+        "821"
+      ],
+      "polygon": [
+        [
+          4.09,
+          65.15
+        ],
+        [
+          31.62,
+          65.15
+        ],
+        [
+          31.62,
+          79.74
+        ],
+        [
+          4.09,
+          79.74
+        ]
+      ],
+      "labelPoint": [
+        17.855,
+        72.445
+      ],
+      "nodeId": "n_SJT821",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT823",
+      "floorId": "f8",
+      "name": "Classroom 823",
+      "type": "classroom",
+      "aliases": [
+        "823"
+      ],
+      "polygon": [
+        [
+          17.45,
+          88.32
+        ],
+        [
+          31.62,
+          88.32
+        ],
+        [
+          31.62,
+          101.14
+        ],
+        [
+          17.45,
+          101.14
+        ]
+      ],
+      "labelPoint": [
+        24.535,
+        94.72999999999999
+      ],
+      "nodeId": "n_SJT823",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT824",
+      "floorId": "f8",
+      "name": "Classroom 824",
+      "type": "classroom",
+      "aliases": [
+        "824"
+      ],
+      "polygon": [
+        [
+          32.17,
+          88.32
+        ],
+        [
+          40.89,
+          88.32
+        ],
+        [
+          40.89,
+          98.41
+        ],
+        [
+          32.17,
+          98.41
+        ]
+      ],
+      "labelPoint": [
+        36.53,
+        93.365
+      ],
+      "nodeId": "n_SJT824",
+      "tags": {},
+      "wheelchairAccessible": true
+    },
+    {
+      "id": "SJT825",
+      "floorId": "f8",
+      "name": "Classroom 825",
+      "type": "classroom",
+      "aliases": [
+        "825"
+      ],
+      "polygon": [
+        [
+          41.3,
+          88.32
+        ],
+        [
+          51.79,
+          88.32
+        ],
+        [
+          51.79,
+          98.41
+        ],
+        [
+          41.3,
+          98.41
+        ]
+      ],
+      "labelPoint": [
+        46.545,
+        93.365
+      ],
+      "nodeId": "n_SJT825",
+      "tags": {},
+      "wheelchairAccessible": true
+    }
+  ],
+  "pois": [
+    {
+      "id": "poi_SJT808",
+      "floorId": "f8",
+      "type": "washroom",
+      "point": [
+        77.69,
+        29.71
+      ],
+      "name": "Men's Toilet 808",
+      "nodeId": "n_SJT808",
+      "tags": {
+        "gender": "male"
+      }
+    },
+    {
+      "id": "poi_SJT809",
+      "floorId": "f8",
+      "type": "washroom",
+      "point": [
+        81.24,
+        24.53
+      ],
+      "name": "Women's Toilet 809",
+      "nodeId": "n_SJT809",
+      "tags": {
+        "gender": "female"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n_SJT801",
+      "floorId": "f8",
+      "x": 63.38,
+      "y": 85.6,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT802",
+      "floorId": "f8",
+      "x": 70.88,
+      "y": 85.87,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT803",
+      "floorId": "f8",
+      "x": 77.96,
+      "y": 79.74,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT804",
+      "floorId": "f8",
+      "x": 74.42,
+      "y": 77.96,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT806",
+      "floorId": "f8",
+      "x": 63.65,
+      "y": 47.3,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT807",
+      "floorId": "f8",
+      "x": 77.15,
+      "y": 38.85,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT808",
+      "floorId": "f8",
+      "x": 77.69,
+      "y": 29.71,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT809",
+      "floorId": "f8",
+      "x": 81.24,
+      "y": 24.53,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT811",
+      "floorId": "f8",
+      "x": 61.61,
+      "y": 43.34,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT820",
+      "floorId": "f8",
+      "x": 32.03,
+      "y": 55.88,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT821",
+      "floorId": "f8",
+      "x": 32.03,
+      "y": 72.24,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT823",
+      "floorId": "f8",
+      "x": 34.08,
+      "y": 86.69,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT824",
+      "floorId": "f8",
+      "x": 41.57,
+      "y": 85.87,
+      "kind": "room"
+    },
+    {
+      "id": "n_SJT825",
+      "floorId": "f8",
+      "x": 52.48,
+      "y": 85.87,
+      "kind": "room"
+    },
+    {
+      "id": "n_LJ1",
+      "floorId": "f8",
+      "x": 47.02,
+      "y": 75.24,
+      "kind": "junction"
+    },
+    {
+      "id": "n_LJ2",
+      "floorId": "f8",
+      "x": 47.98,
+      "y": 56.56,
+      "kind": "junction"
+    },
+    {
+      "id": "n_LJ3",
+      "floorId": "f8",
+      "x": 93.78,
+      "y": 80.15,
+      "kind": "junction"
+    },
+    {
+      "id": "n_L1",
+      "floorId": "f8",
+      "x": 28.35,
+      "y": 88.32,
+      "kind": "elevator"
+    },
+    {
+      "id": "n_S1",
+      "floorId": "f8",
+      "x": 66.24,
+      "y": 29.44,
+      "kind": "stair"
+    }
+  ],
+  "edges": [
+    {
+      "a": "n_S1",
+      "b": "n_SJT808",
+      "kind": "corridor",
+      "lengthM": 11.45,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT808",
+      "b": "n_SJT809",
+      "kind": "corridor",
+      "lengthM": 6.28,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT808",
+      "b": "n_SJT807",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT808",
+      "b": "n_SJT806",
+      "kind": "corridor",
+      "lengthM": 22.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT808",
+      "b": "n_SJT811",
+      "kind": "corridor",
+      "lengthM": 30.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT808",
+      "b": "n_LJ2",
+      "kind": "corridor",
+      "lengthM": 40.05,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_LJ2",
+      "b": "n_SJT820",
+      "kind": "corridor",
+      "lengthM": 22.5,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT820",
+      "b": "n_SJT821",
+      "kind": "corridor",
+      "lengthM": 17.25,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT821",
+      "b": "n_SJT824",
+      "kind": "corridor",
+      "lengthM": 24.75,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT823",
+      "b": "n_SJT824",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT823",
+      "b": "n_L1",
+      "kind": "corridor",
+      "lengthM": 5.95,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT824",
+      "b": "n_SJT825",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT824",
+      "b": "n_LJ1",
+      "kind": "corridor",
+      "lengthM": 11.95,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT825",
+      "b": "n_SJT801",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT801",
+      "b": "n_SJT802",
+      "kind": "corridor",
+      "lengthM": 15.0,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT802",
+      "b": "n_SJT803",
+      "kind": "corridor",
+      "lengthM": 9.37,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT803",
+      "b": "n_SJT804",
+      "kind": "corridor",
+      "lengthM": 3.96,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT803",
+      "b": "n_LJ3",
+      "kind": "corridor",
+      "lengthM": 15.82,
+      "accessible": true,
+      "bidirectional": true
+    },
+    {
+      "a": "n_SJT806",
+      "b": "n_SJT801",
+      "kind": "corridor",
+      "lengthM": 38.3,
+      "accessible": true,
+      "bidirectional": true
+    }
+  ]
+}
