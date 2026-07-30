@@ -18,4 +18,32 @@ build/
 lib/firebase_options.dart
 .firebase/
 
-*.png
+# ---------------------------------------------------------------------------
+# Institutional floor plans — NEVER commit these (see the root .gitignore).
+# VIT-provided drawings are held under a commitment not to redistribute them.
+# Only the DERIVED coordinates in assets/campuses/**/*.json may be committed.
+#
+# A bare `*.png` used to be the whole rule here, which silently failed the
+# moment plans arrived as .jpeg. Ignore the plan directory by path instead of
+# guessing at file extensions, so the policy holds whatever format they land
+# in — and keep app icons and web assets committable.
+# ---------------------------------------------------------------------------
+assets/campuses/maps/**/*.png
+assets/campuses/maps/**/*.jpg
+assets/campuses/maps/**/*.jpeg
+assets/campuses/maps/**/*.webp
+assets/campuses/maps/**/*.pdf
+
+# Scratch screenshots at the app root (demo_map.png, nav_demo.png, …).
+# Anything intended for the docs belongs in docs/assets/ and is committed.
+/*.png
+/*.jpg
+/*.jpeg
+
+# Local Android SDK paths — machine-specific, never shared.
+android/local.properties
+
+# Editor/filesystem debris
+**/.fuse_hidden*
+android/.kotlin/
+_recovery/

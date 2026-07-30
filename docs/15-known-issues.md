@@ -6,25 +6,62 @@ Related: [Roadmap](14-roadmap.md) · [Architecture](02-architecture.md) · [Rout
 
 ---
 
+## 0. 🔴 ACTIVE REGRESSION — the shipped SJT bundle is empty
+
+**`assets/campuses/vit-vellore/bundle_SJT.json` currently contains no map at all.** It is 171 bytes:
+
+```jsonc
+{ "schemaVersion": 1, "buildingId": "UNKNOWN", "buildingName": "UNKNOWN",
+  "version": 1, "floors": [], "rooms": [], "pois": [], "nodes": [], "edges": [] }
+```
+
+Committed in `83cb90d "added floor 5"`. The app therefore shows **nothing** for SJT — no floors, no rooms, no routes. The traced sources (`floor_5/6/8.json`) are intact, so no work was lost; only the generated artefact is bad.
+
+**Root cause.** `floorplan_to_bundle.dart` collected inputs with `args.where((a) => a.endsWith('.json'))`. Given no argument ending in `.json`, `inputs` was empty, `convert([])` returned a bundle with `buildingId ?? 'UNKNOWN'` and zero floors, `errors` was empty — so the tool reported success and overwrote a good map with an empty one.
+
+**Fixed in the tool** (three guards added):
+
+1. Reject an empty input list with a usage message showing the full multi-floor command.
+2. Reject a 0-byte floor file by name, rather than failing obscurely later.
+3. Refuse to write a bundle with zero floors or zero nodes — an empty bundle is always a tooling failure, never a legitimate result.
+4. Exclude the `--out` path from `inputs` — it also ends in `.json`, so it was being read back as an input floor document.
+
+**Still to do — regenerate the bundle:**
+
+```bash
+cd app
+dart run tool/survey/floorplan_to_bundle.dart \
+    assets/campuses/maps/sjt/floor_5.json \
+    assets/campuses/maps/sjt/floor_6.json \
+    assets/campuses/maps/sjt/floor_8.json \
+    --out assets/campuses/vit-vellore/bundle_SJT.json
+```
+
+All three floors must be in **one** command — vertical stair/lift links are only created between the floors passed together, so regenerating one at a time yields a disconnected building.
+
+---
+
 ## 1. Data & content gaps
 
-### 1.1 SJT is 2 floors of 9 — **highest priority**
+### 1.1 SJT is 3 traced floors of 9 — **highest priority**
 
-`bundle_SJT.json` contains floors **6 and 8 only**: 37 rooms, 41 nodes, 42 edges.
+Traced sources, as of this pass:
 
 ```
 maps/sjt/floor_0.json   0 bytes   ← empty placeholder
-maps/sjt/floor_1.json   0 bytes
-maps/sjt/floor_2.json   0 bytes
-maps/sjt/floor_3.json   0 bytes
-maps/sjt/floor_4.json   0 bytes
-maps/sjt/floor_5.json   0 bytes   ← plan image exists, tracing does not
-maps/sjt/floor_6.json  23 KB      ✅
-maps/sjt/floor_7.json   0 bytes
-maps/sjt/floor_8.json  11 KB      ✅
+maps/sjt/floor_1.json   0 bytes      plan image now available (1st floor.jpeg)
+maps/sjt/floor_2.json   0 bytes      plan image now available (2nd floor.jpeg)
+maps/sjt/floor_3.json   0 bytes      plan image now available (3rd floor.jpeg)
+maps/sjt/floor_4.json   0 bytes      plan image now available (4th floor.jpeg)
+maps/sjt/floor_5.json  23 KB      ✅ 23 nodes, 24 edges, 5 corridors
+maps/sjt/floor_6.json  23 KB      ✅ 22 nodes, 21 edges, 3 corridors
+maps/sjt/floor_7.json   0 bytes      no plan image
+maps/sjt/floor_8.json  11 KB      ✅ 19 nodes, 19 edges, 4 corridors
 ```
 
-Only `5th floor.png`, `6th floor.png` and `8th floor.png` are present, so floors 0–4 and 7 need plan images before they can even be traced. This is the binding constraint on the whole project — see [Phase 1](14-roadmap.md).
+Plan images now exist for floors **1, 2, 3, 4, 5, 6 and 8** — only the Ground Floor and floor 7 still lack one. Tracing, not image acquisition, is now the bottleneck. This remains the binding constraint on the project — see [Phase 1](14-roadmap.md).
+
+> Floor 5 is traced but **not yet in any bundle**, because of the regression in §0.
 
 ### 1.2 No `entrance` node anywhere in the SJT bundle
 
@@ -86,23 +123,47 @@ Routing is unaffected (`NodeKind` does not influence cost), but it is semantical
 
 Resolved in favour of the code: `tags: {"gender": "male"}`. Noted because both `floorplan_to_bundle` and the docs previously suggested otherwise. [03-data-model.md](03-data-model.md) now matches the code.
 
-### 2.5 Repository hygiene
+### 2.5 CI has never passed
+
+`.github/workflows/ci.yml` runs `flutter analyze` and `flutter test`. **Every commit in the repository's history shows a failing check**, including the initial one.
+
+**Leading cause: `flutter analyze` defaults to `--fatal-infos`,** so *any* info-level lint fails the build — and `analysis_options.yaml` enables a strict set (`avoid_dynamic_calls`, `require_trailing_commas`, `prefer_single_quotes`, `directives_ordering`, `prefer_final_locals`, …) on top of `strict-casts` / `strict-inference` / `strict-raw-types`. The codebase has never been brought to a clean analyzer state.
+
+**Fixed in this pass**
+
+| Issue | Where |
+|---|---|
+| `avoid_dynamic_calls` — inline `as` does not promote a `dynamic` loop variable, so the *second* index was an unchecked dynamic invocation | `floorplan_to_bundle.dart` ×3, `search_controller.dart` ×1 |
+| SDK floor declared `>=3.22.0` while the code needs ≥3.32 (`RadioGroup`, `DropdownButtonFormField.initialValue`, `Matrix4.translateByDouble`) | `pubspec.yaml` |
+
+**Remaining — needs the real analyzer.** These are mechanical and should be applied with tooling, not by hand:
+
+```bash
+cd app
+dart fix --dry-run          # see what will change
+dart fix --apply            # trailing commas, quotes, final locals, …
+dart format .
+flutter analyze             # then read whatever is genuinely left
+```
+
+Only once `flutter analyze` is clean should a `dart format --set-exit-if-changed .` step be added to CI — a gate that starts red teaches everyone to ignore it.
+
+Candidates the analyzer may still flag, unverified from here: raw `List` / `Map` in `is` / `as` positions under `strict-raw-types` (`building_bundle_dto.dart` ×5, `floorplan_to_bundle.dart` ×6).
+
+### 2.6 Repository hygiene
+
+**Fixed in this pass:** `.fuse_hidden*` copies, `_recovery/*.backup.json` and `android/.kotlin/errors/*.log` untracked from git and added to `.gitignore`, along with `android/local.properties` and `.claude/`.
+
+**A real leak risk was also closed.** `app/.gitignore` protected institutional floor plans with a bare `*.png` — which silently stopped working the moment plans arrived as `1st floor.jpeg` … `4th floor.jpeg`. Those four were untracked and would have been committed by any `git add .`, against the root `.gitignore`'s explicit "NEVER commit these" policy. The rule is now **path-based** (`assets/campuses/maps/**`) rather than extension-based, so it holds for any format. As a side effect, `web/favicon.png` and the launcher icons — which the old blanket `*.png` also excluded — are committable again.
+
+**Still outstanding**
 
 | Item | Problem |
 |---|---|
 | `app/README.md` | Still the default `flutter create` template |
 | `floor plans.pdf` (9.5 MB) | Large binary at repo root |
 | `rough.json`, `sjt_floor8_preview.png`, `sjt_floor8_v2.png` | Scratch files at repo root |
-| `app/demo_map.png`, `demo_routing.png`, `nav_demo.png`, `release_home.png` | Screenshots loose in the app root rather than `docs/assets/` |
-| `app/_recovery/*.backup.json` | Manual backups; version control already does this |
-| `app/test/features/**/.fuse_hidden*` | Orphaned filesystem artefacts from an interrupted operation, containing full copies of test files |
-| `app/android/.kotlin/errors/*.log` | Build error logs not ignored |
-
-None affects correctness; all affect how the repository reads to an external reviewer, which for this project is part of the deliverable.
-
-### 2.6 `dart format` drift
-
-`dart format --set-exit-if-changed .` reports roughly 23 files needing reformatting under current `dart_style`. Deliberately not fixed in a docs pass — run it, commit the mass diff on its own, *then* add the gate to CI so the gate never starts red.
+| `app/demo_map.png`, `demo_routing.png`, `nav_demo.png`, `release_home.png` | Now gitignored, but should move to `docs/assets/` if they are wanted in the repo |
 
 ### 2.7 Unverified performance claims
 
@@ -147,14 +208,21 @@ Retained because the reasoning is more valuable than the fix.
 
 ---
 
-## 5. Before any public release
+## 5. Do this first
 
-- [x] `flutter analyze` and `flutter test` in CI on every push and PR
-- [ ] `dart format --set-exit-if-changed` clean, then gated in CI (§2.6)
+1. [ ] **Regenerate `bundle_SJT.json`** from floors 5, 6 and 8 in one command (§0). The app has no map until this is done.
+2. [ ] **Get CI green:** `dart fix --apply && dart format . && flutter analyze` (§2.5).
+3. [ ] Delete the stale `app/../.git/index.lock` left by this session's staged removals, if git complains.
+
+## 6. Before any public release
+
+- [x] `flutter analyze` and `flutter test` wired into CI on every push and PR
+- [ ] **CI actually passing** — it never has (§2.5)
+- [ ] `dart format --set-exit-if-changed` clean, *then* gated in CI
 - [ ] Manual TalkBack pass on every screen
 - [ ] Six SJT floors mapped, with an `entrance` node
 - [ ] Graph validation running in the generator that is actually used (§2.1)
 - [ ] Simulated navigation shipped **and visibly labelled as simulated**
-- [ ] Repository root cleaned (§2.5); `app/README.md` written
+- [ ] Repository root cleaned (§2.6); `app/README.md` written
 - [ ] Performance claims measured or restated (§2.7)
 - [ ] Firestore/Storage rules tested against the emulator suite before any deployment

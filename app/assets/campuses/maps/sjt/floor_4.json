@@ -1,0 +1,1047 @@
+{
+    "building": "SJT",
+    "floor": 4,
+    "image": {
+        "file": "4th floor.png",
+        "width": 738,
+        "height": 704
+    },
+    "nodes": [
+        {
+            "id": "SJT421",
+            "kind": "classroom",
+            "displayName": "Classroom 421",
+            "aliases": [
+                "Classroom",
+                "421"
+            ],
+            "x": 144,
+            "y": 554,
+            "polygon": [
+                [
+                    74,
+                    541
+                ],
+                [
+                    63,
+                    630
+                ],
+                [
+                    131,
+                    637
+                ],
+                [
+                    142,
+                    546
+                ]
+            ]
+        },
+        {
+            "id": "SJT422",
+            "kind": "classroom",
+            "displayName": "Classroom 422",
+            "aliases": [
+                "Classroom",
+                "422"
+            ],
+            "x": 203,
+            "y": 564,
+            "polygon": [
+                [
+                    140,
+                    562
+                ],
+                [
+                    131,
+                    638
+                ],
+                [
+                    205,
+                    644
+                ],
+                [
+                    209,
+                    567
+                ]
+            ]
+        },
+        {
+            "id": "SJT423",
+            "kind": "classroom",
+            "displayName": "Classroom 423",
+            "aliases": [
+                "Classroom",
+                "423"
+            ],
+            "x": 268,
+            "y": 553,
+            "polygon": [
+                [
+                    211,
+                    548
+                ],
+                [
+                    204,
+                    629
+                ],
+                [
+                    276,
+                    638
+                ],
+                [
+                    284,
+                    552
+                ]
+            ]
+        },
+        {
+            "id": "SJT424",
+            "kind": "classroom",
+            "displayName": "Classroom 424",
+            "aliases": [
+                "Classroom",
+                "424"
+            ],
+            "x": 358,
+            "y": 561,
+            "polygon": [
+                [
+                    281,
+                    556
+                ],
+                [
+                    370,
+                    565
+                ],
+                [
+                    360,
+                    641
+                ],
+                [
+                    274,
+                    636
+                ]
+            ]
+        },
+        {
+            "id": "SJT401",
+            "kind": "classroom",
+            "displayName": "Classroom 401",
+            "aliases": [
+                "Classroom",
+                "401"
+            ],
+            "x": 422,
+            "y": 564,
+            "polygon": [
+                [
+                    364,
+                    561
+                ],
+                [
+                    358,
+                    644
+                ],
+                [
+                    421,
+                    650
+                ],
+                [
+                    430,
+                    568
+                ]
+            ]
+        },
+        {
+            "id": "SJT402",
+            "kind": "classroom",
+            "displayName": "Classroom 402",
+            "aliases": [
+                "Classroom",
+                "402"
+            ],
+            "x": 495,
+            "y": 570,
+            "polygon": [
+                [
+                    427,
+                    567
+                ],
+                [
+                    420,
+                    662
+                ],
+                [
+                    500,
+                    673
+                ],
+                [
+                    509,
+                    572
+                ]
+            ]
+        },
+        {
+            "id": "SJT403",
+            "kind": "classroom",
+            "displayName": "Classroom 403",
+            "aliases": [
+                "Classroom",
+                "403"
+            ],
+            "x": 571,
+            "y": 578,
+            "polygon": [
+                [
+                    506,
+                    574
+                ],
+                [
+                    589,
+                    581
+                ],
+                [
+                    584,
+                    680
+                ],
+                [
+                    503,
+                    671
+                ]
+            ]
+        },
+        {
+            "id": "SJT404",
+            "kind": "classroom",
+            "displayName": "Classroom 404",
+            "aliases": [
+                "Classroom",
+                "404"
+            ],
+            "x": 568,
+            "y": 525,
+            "polygon": [
+                [
+                    515,
+                    447
+                ],
+                [
+                    509,
+                    520
+                ],
+                [
+                    590,
+                    528
+                ],
+                [
+                    597,
+                    451
+                ]
+            ]
+        },
+        {
+            "id": "SJT405",
+            "kind": "classroom",
+            "displayName": "Classroom 405",
+            "aliases": [
+                "Classroom",
+                "405"
+            ],
+            "x": 489,
+            "y": 520,
+            "polygon": [
+                [
+                    438,
+                    442
+                ],
+                [
+                    435,
+                    518
+                ],
+                [
+                    510,
+                    521
+                ],
+                [
+                    517,
+                    447
+                ]
+            ]
+        },
+        {
+            "id": "SJT407",
+            "kind": "classroom",
+            "displayName": "Classroom 407",
+            "aliases": [
+                "Classroom",
+                "407"
+            ],
+            "x": 443,
+            "y": 385,
+            "polygon": [
+                [
+                    448,
+                    344
+                ],
+                [
+                    442,
+                    390
+                ],
+                [
+                    561,
+                    399
+                ],
+                [
+                    563,
+                    349
+                ]
+            ]
+        },
+        {
+            "id": "SJT408",
+            "kind": "classroom",
+            "displayName": "Classroom 408",
+            "aliases": [
+                "Classroom",
+                "408"
+            ],
+            "x": 449,
+            "y": 304,
+            "polygon": [
+                [
+                    451,
+                    300
+                ],
+                [
+                    449,
+                    342
+                ],
+                [
+                    565,
+                    348
+                ],
+                [
+                    568,
+                    301
+                ]
+            ]
+        },
+        {
+            "id": "SJT409",
+            "kind": "classroom",
+            "displayName": "Classroom 409",
+            "aliases": [
+                "Classroom",
+                "409"
+            ],
+            "x": 525,
+            "y": 293,
+            "polygon": [
+                [
+                    529,
+                    226
+                ],
+                [
+                    612,
+                    226
+                ],
+                [
+                    607,
+                    302
+                ],
+                [
+                    526,
+                    301
+                ]
+            ]
+        },
+        {
+            "id": "SJT415",
+            "kind": "classroom",
+            "displayName": "Classroom 415",
+            "aliases": [
+                "Classroom",
+                "415"
+            ],
+            "x": 175,
+            "y": 283,
+            "polygon": [
+                [
+                    115,
+                    219
+                ],
+                [
+                    107,
+                    291
+                ],
+                [
+                    171,
+                    293
+                ],
+                [
+                    181,
+                    222
+                ]
+            ]
+        },
+        {
+            "id": "SJT410",
+            "kind": "toilet_male",
+            "displayName": "Men's Washroom",
+            "aliases": [
+                "Toilet",
+                "Washroom",
+                "Men"
+            ],
+            "x": 534,
+            "y": 150,
+            "polygon": [
+                [
+                    539,
+                    140
+                ],
+                [
+                    618,
+                    137
+                ],
+                [
+                    613,
+                    213
+                ],
+                [
+                    537,
+                    213
+                ]
+            ]
+        },
+        {
+            "id": "SJT414",
+            "kind": "toilet_female",
+            "displayName": "Women's Washroom",
+            "aliases": [
+                "Washroom",
+                "Toilet",
+                "Women"
+            ],
+            "x": 196,
+            "y": 151,
+            "polygon": [
+                [
+                    126,
+                    140
+                ],
+                [
+                    190,
+                    140
+                ],
+                [
+                    183,
+                    210
+                ],
+                [
+                    117,
+                    209
+                ]
+            ]
+        },
+        {
+            "id": "SJT416",
+            "kind": "lab",
+            "displayName": "Cloud Computing Lab",
+            "aliases": [
+                "Lab"
+            ],
+            "x": 218,
+            "y": 388,
+            "polygon": [
+                [
+                    169,
+                    292
+                ],
+                [
+                    239,
+                    293
+                ],
+                [
+                    230,
+                    388
+                ],
+                [
+                    160,
+                    387
+                ]
+            ]
+        },
+        {
+            "id": "SJT419",
+            "kind": "lab",
+            "displayName": "Image Processing Vision and Graphics Lab",
+            "aliases": [
+                "Lab"
+            ],
+            "x": 213,
+            "y": 406,
+            "polygon": [
+                [
+                    159,
+                    403
+                ],
+                [
+                    147,
+                    497
+                ],
+                [
+                    219,
+                    504
+                ],
+                [
+                    228,
+                    407
+                ]
+            ]
+        },
+        {
+            "id": "SJT417",
+            "kind": "lab",
+            "displayName": "Software System Lab",
+            "aliases": [
+                "Lab"
+            ],
+            "x": 109,
+            "y": 385,
+            "polygon": [
+                [
+                    105,
+                    292
+                ],
+                [
+                    170,
+                    293
+                ],
+                [
+                    159,
+                    387
+                ],
+                [
+                    97,
+                    385
+                ]
+            ]
+        },
+        {
+            "id": "SJT418",
+            "kind": "lab",
+            "displayName": "Computational Intelligence Lab",
+            "aliases": [
+                "Lab"
+            ],
+            "x": 104,
+            "y": 401,
+            "polygon": [
+                [
+                    91,
+                    400
+                ],
+                [
+                    159,
+                    403
+                ],
+                [
+                    148,
+                    496
+                ],
+                [
+                    76,
+                    494
+                ]
+            ]
+        },
+        {
+            "id": "L1",
+            "kind": "lift",
+            "displayName": "L1",
+            "aliases": [
+                "Lift"
+            ],
+            "x": 176,
+            "y": 521,
+            "polygon": [
+                [
+                    182,
+                    501
+                ],
+                [
+                    179,
+                    549
+                ],
+                [
+                    121,
+                    541
+                ],
+                [
+                    123,
+                    498
+                ]
+            ]
+        },
+        {
+            "id": "LJ1",
+            "kind": "lift_junction",
+            "displayName": "LJ1",
+            "aliases": [
+                "Lift",
+                "Stairs"
+            ],
+            "x": 328,
+            "y": 520,
+            "polygon": [
+                [
+                    361,
+                    482
+                ],
+                [
+                    358,
+                    528
+                ],
+                [
+                    271,
+                    517
+                ],
+                [
+                    273,
+                    480
+                ]
+            ]
+        },
+        {
+            "id": "LJ3",
+            "kind": "lift_junction",
+            "displayName": "LJ3",
+            "aliases": [
+                "Lift",
+                "Stairs"
+            ],
+            "x": 592,
+            "y": 551,
+            "polygon": [
+                [
+                    644,
+                    531
+                ],
+                [
+                    642,
+                    582
+                ],
+                [
+                    588,
+                    578
+                ],
+                [
+                    589,
+                    523
+                ]
+            ]
+        },
+        {
+            "id": "S1",
+            "kind": "staircase",
+            "displayName": "S1",
+            "aliases": [
+                "Stairs"
+            ],
+            "x": 457,
+            "y": 204,
+            "polygon": [
+                [
+                    442,
+                    156
+                ],
+                [
+                    413,
+                    185
+                ],
+                [
+                    442,
+                    220
+                ],
+                [
+                    482,
+                    189
+                ]
+            ]
+        },
+        {
+            "id": "S2",
+            "kind": "staircase",
+            "displayName": "S2",
+            "aliases": [
+                "Stairs"
+            ],
+            "x": 253,
+            "y": 197,
+            "polygon": [
+                [
+                    266,
+                    159
+                ],
+                [
+                    292,
+                    190
+                ],
+                [
+                    260,
+                    219
+                ],
+                [
+                    236,
+                    190
+                ]
+            ]
+        }
+    ],
+    "edges": [
+        {
+            "from": "S1",
+            "to": "SJT410",
+            "weight": 20
+        },
+        {
+            "from": "SJT410",
+            "to": "SJT409",
+            "weight": 22
+        },
+        {
+            "from": "SJT410",
+            "to": "SJT408",
+            "weight": 33
+        },
+        {
+            "from": "SJT410",
+            "to": "LJ3",
+            "weight": 60
+        },
+        {
+            "from": "LJ3",
+            "to": "SJT414",
+            "weight": 50
+        },
+        {
+            "from": "SJT414",
+            "to": "S2",
+            "weight": 10
+        },
+        {
+            "from": "SJT414",
+            "to": "SJT415",
+            "weight": 24
+        },
+        {
+            "from": "LJ3",
+            "to": "SJT416",
+            "weight": 35
+        },
+        {
+            "from": "SJT416",
+            "to": "SJT419",
+            "weight": 5
+        },
+        {
+            "from": "SJT419",
+            "to": "SJT418",
+            "weight": 15
+        },
+        {
+            "from": "SJT418",
+            "to": "SJT417",
+            "weight": 5
+        },
+        {
+            "from": "SJT416",
+            "to": "L1",
+            "weight": 35
+        },
+        {
+            "from": "L1",
+            "to": "SJT422",
+            "weight": 10
+        },
+        {
+            "from": "SJT422",
+            "to": "SJT421",
+            "weight": 10
+        },
+        {
+            "from": "L1",
+            "to": "SJT423",
+            "weight": 20
+        },
+        {
+            "from": "SJT423",
+            "to": "SJT424",
+            "weight": 20
+        },
+        {
+            "from": "SJT424",
+            "to": "SJT401",
+            "weight": 20
+        },
+        {
+            "from": "SJT401",
+            "to": "SJT402",
+            "weight": 20
+        },
+        {
+            "from": "SJT402",
+            "to": "SJT403",
+            "weight": 20
+        },
+        {
+            "from": "SJT402",
+            "to": "SJT405",
+            "weight": 10
+        },
+        {
+            "from": "SJT405",
+            "to": "SJT404",
+            "weight": 5
+        },
+        {
+            "from": "SJT404",
+            "to": "LJ3",
+            "weight": 10
+        },
+        {
+            "from": "SJT423",
+            "to": "LJ1",
+            "weight": 15
+        },
+        {
+            "from": "SJT401",
+            "to": "SJT407",
+            "weight": 40
+        }
+    ],
+    "corridors": [
+        [
+            [
+                147,
+                552
+            ],
+            [
+                202,
+                557
+            ],
+            [
+                209,
+                509
+            ],
+            [
+                190,
+                508
+            ],
+            [
+                189,
+                540
+            ],
+            [
+                580,
+                570
+            ],
+            [
+                580,
+                535
+            ],
+            [
+                411,
+                526
+            ],
+            [
+                432,
+                264
+            ],
+            [
+                449,
+                254
+            ],
+            [
+                451,
+                225
+            ],
+            [
+                501,
+                191
+            ],
+            [
+                503,
+                151
+            ],
+            [
+                527,
+                149
+            ],
+            [
+                522,
+                295
+            ],
+            [
+                516,
+                161
+            ],
+            [
+                510,
+                243
+            ],
+            [
+                447,
+                283
+            ],
+            [
+                452,
+                291
+            ],
+            [
+                439,
+                288
+            ],
+            [
+                425,
+                541
+            ],
+            [
+                566,
+                552
+            ],
+            [
+                225,
+                525
+            ],
+            [
+                258,
+                256
+            ],
+            [
+                300,
+                308
+            ],
+            [
+                388,
+                308
+            ],
+            [
+                495,
+                234
+            ],
+            [
+                498,
+                208
+            ],
+            [
+                462,
+                239
+            ],
+            [
+                374,
+                320
+            ],
+            [
+                416,
+                320
+            ],
+            [
+                414,
+                304
+            ],
+            [
+                356,
+                320
+            ],
+            [
+                266,
+                318
+            ],
+            [
+                262,
+                283
+            ],
+            [
+                285,
+                306
+            ],
+            [
+                260,
+                314
+            ],
+            [
+                234,
+                525
+            ],
+            [
+                254,
+                219
+            ],
+            [
+                212,
+                185
+            ],
+            [
+                216,
+                153
+            ],
+            [
+                197,
+                150
+            ],
+            [
+                183,
+                284
+            ],
+            [
+                197,
+                235
+            ],
+            [
+                204,
+                165
+            ],
+            [
+                212,
+                245
+            ],
+            [
+                224,
+                212
+            ],
+            [
+                240,
+                227
+            ],
+            [
+                223,
+                255
+            ],
+            [
+                241,
+                249
+            ],
+            [
+                233,
+                265
+            ],
+            [
+                242,
+                285
+            ]
+        ],
+        [
+            [
+                236,
+                398
+            ],
+            [
+                67,
+                391
+            ]
+        ]
+    ],
+    "corridorWidthM": 2.5
+}

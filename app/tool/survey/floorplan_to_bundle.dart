@@ -54,13 +54,39 @@ Future<void> main(List<String> args) async {
   // scales identically.
   final strideM = double.tryParse(_flag(args, '--stride') ?? '0.75') ?? 0.75;
 
-  final inputs = args.where((a) => a.endsWith('.json')).toList();
+  // Exclude the --out path: it also ends in .json, so it was previously
+  // collected as if it were an input floor document.
+  final inputs =
+      args.where((a) => a.endsWith('.json') && a != outPath).toList();
+
+  // Without this guard the tool "succeeds" on zero inputs and writes a bundle
+  // with buildingId "UNKNOWN" and no floors — silently replacing a good map
+  // with an empty one. That has already happened once in this repo's history.
+  if (inputs.isEmpty) {
+    stderr.writeln('No input floor files given.\n'
+        'Pass every traced floor of the building in ONE command, e.g.\n'
+        '  dart run tool/survey/floorplan_to_bundle.dart \\\n'
+        '      assets/campuses/maps/sjt/floor_5.json \\\n'
+        '      assets/campuses/maps/sjt/floor_6.json \\\n'
+        '      assets/campuses/maps/sjt/floor_8.json \\\n'
+        '      --out $outPath\n'
+        'Vertical stair/lift links are only created between the floors given, '
+        'so regenerating one floor alone produces a disconnected building.');
+    exit(64);
+  }
+
   final floors = <Map<String, dynamic>>[];
   for (final path in inputs) {
     final file = File(path);
     if (!file.existsSync()) {
       stderr.writeln('No such file: $path');
       exit(66);
+    }
+    if (file.lengthSync() == 0) {
+      stderr.writeln('$path is empty — that floor has not been traced yet. '
+          'Trace it in tool/tracer/index.html, or leave it out of the '
+          'command.');
+      exit(65);
     }
     floors.add(jsonDecode(file.readAsStringSync()) as Map<String, dynamic>);
   }
@@ -75,6 +101,18 @@ Future<void> main(List<String> args) async {
     for (final e in result.errors) {
       stderr.writeln('  $e');
     }
+    exit(65);
+  }
+
+  // Last line of defence: never overwrite a real bundle with an empty one.
+  // An empty bundle is always a tooling failure, never a legitimate result.
+  final producedFloors = (result.bundle['floors'] as List<dynamic>).length;
+  final producedNodes = (result.bundle['nodes'] as List<dynamic>).length;
+  if (producedFloors == 0 || producedNodes == 0) {
+    stderr.writeln('\nRefusing to write an empty bundle '
+        '($producedFloors floors, $producedNodes nodes). '
+        'The inputs parsed but yielded no geometry — check that each floor '
+        'file has "nodes" and "edges" arrays.');
     exit(65);
   }
 
@@ -246,10 +284,14 @@ ConvertResult convert(
     );
 
     double mx(double v) => double.parse((v * metresPerPx).toStringAsFixed(2));
+    // cast<>() rather than an inline `as` on each element: casting inside the
+    // expression does not promote `pt`, so the second index would be a
+    // *dynamic* invocation — unchecked at compile time, and a runtime
+    // NoSuchMethodError if the trace ever holds something other than a list.
     List<List<double>> mxPath(List<dynamic> path) => [
-          for (final pt in path)
+          for (final pt in path.cast<List<dynamic>>())
             [
-              mx(((pt as List<dynamic>)[0] as num).toDouble()),
+              mx((pt[0] as num).toDouble()),
               mx((pt[1] as num).toDouble()),
             ],
         ];
@@ -377,9 +419,10 @@ ConvertResult convert(
       if (roomType != null) {
         final polygon = s['polygon'] is List
             ? [
-                for (final pt in s['polygon'] as List<dynamic>)
+                for (final pt
+                    in (s['polygon'] as List<dynamic>).cast<List<dynamic>>())
                   [
-                    mx(((pt as List<dynamic>)[0] as num).toDouble()),
+                    mx((pt[0] as num).toDouble()),
                     mx((pt[1] as num).toDouble()),
                   ],
               ]
@@ -580,8 +623,9 @@ _Px? _centroidPx(Map<String, dynamic> shape, _Px? ownPoint) {
   if (ownPoint != null) return ownPoint;
   final ring = shape['polygon'] is List
       ? (shape['polygon'] as List<dynamic>)
+          .cast<List<dynamic>>()
           .map((pt) => (
-                x: ((pt as List<dynamic>)[0] as num).toDouble(),
+                x: (pt[0] as num).toDouble(),
                 y: (pt[1] as num).toDouble(),
               ))
           .toList()

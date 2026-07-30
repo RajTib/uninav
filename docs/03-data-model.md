@@ -200,11 +200,12 @@ Documented because roadmap claims should be checkable against the repository.
 | Asset | Contents |
 |---|---|
 | `vit-vellore/campus.json` | 10 buildings: SJT (`inProgress`), 9 `planned` |
-| `vit-vellore/bundle_SJT.json` | **Floors 6 and 8 only.** 37 rooms, 2 POIs, 41 nodes, 42 edges (40 corridor, 1 stair, 1 elevator) |
+| `vit-vellore/bundle_SJT.json` | ⚠️ **Currently empty** — `buildingId: "UNKNOWN"`, zero floors. Overwritten by a bad regeneration run; see [15 §0](15-known-issues.md). Its last good contents were floors 6 and 8: 37 rooms, 2 POIs, 41 nodes, 42 edges (40 corridor, 1 stair, 1 elevator) |
 | `demo/campus.json` | 2 buildings: `main` (`mapped`), `annex` (`planned`, exists to exercise the unmapped-building UI) |
 | `demo/bundle_main.json` | Floors 0 and 1. 5 rooms, 1 POI, 17 nodes, 17 edges |
-| `maps/sjt/floor_6.json`, `floor_8.json` | Traced sources — 22 and 19 nodes |
-| `maps/sjt/floor_0…5.json`, `floor_7.json` | **Empty files (0 bytes).** Placeholders; not yet traced |
+| `maps/sjt/floor_5.json`, `floor_6.json`, `floor_8.json` | Traced sources — 23, 22 and 19 nodes |
+| `maps/sjt/floor_0…4.json`, `floor_7.json` | **Empty files (0 bytes).** Placeholders; not yet traced |
+| `maps/sjt/*.png`, `*.jpeg` | Plan images for floors 1–6 and 8. **Gitignored by policy** — institutional drawings must not be redistributed; only derived coordinates are committed |
 
 Two consequences worth flagging:
 

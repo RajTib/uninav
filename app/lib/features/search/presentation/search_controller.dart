@@ -45,9 +45,13 @@ final class RecentPicksNotifier extends Notifier<List<RecentPick>> {
     if (raw == null) return const [];
     try {
       return [
-        for (final item in jsonDecode(raw) as List<dynamic>)
+        // cast<>() rather than an inline `as` on the first field: casting
+        // inside the expression does not promote `item`, so the remaining
+        // lookups would be *dynamic* invocations — unchecked at compile time.
+        for (final item
+            in (jsonDecode(raw) as List<dynamic>).cast<Map<String, dynamic>>())
           (
-            id: (item as Map<String, dynamic>)['id'] as String,
+            id: item['id'] as String,
             name: item['name'] as String,
             subtitle: item['subtitle'] as String,
           ),

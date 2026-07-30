@@ -11,10 +11,11 @@ floorplans/
 *.dxf
 *.rvt
 
-# IDE
+# IDE / agent tooling
 .idea/
 .vscode/
 *.iml
+.claude/
 
 # OS
 .DS_Store
@@ -27,3 +28,4 @@ build/
 .dart_tool/
 
 *.pdf
+*.png

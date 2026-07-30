@@ -5,11 +5,18 @@ version: 0.1.0+1
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
-  flutter: ">=3.22.0"
+  # Floor raised from 3.22.0, which was never true. The app already uses APIs
+  # introduced after it, and a 3.22 SDK cannot compile this code:
+  #   RadioGroup<T>                           settings_screen.dart   (3.32)
+  #   DropdownButtonFormField(initialValue:)  route_planner_screen   (3.32)
+  #   Matrix4.translateByDouble/scaleByDouble map_screen.dart        (3.29)
+  # Keep this honest: a declared floor nobody builds against is worse than
+  # none, because CI silently drifts away from it.
+  flutter: ">=3.32.0"
 
-# Milestone 1 deliberately has NO Firebase dependencies.
-# The data layer runs on a bundled-asset data source; Firebase plugs into the
-# same repository interfaces in Milestone 5 (see docs/14-roadmap.md).
+# No Firebase dependencies yet — the data layer runs on a bundled-asset data
+# source, and Firebase plugs into the same repository interfaces whenever it
+# lands (see docs/14-roadmap.md).
 dependencies:
   collection: ^1.18.0
   flutter:

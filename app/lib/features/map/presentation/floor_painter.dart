@@ -519,7 +519,10 @@ final class RoutePainter extends CustomPainter {
     }
 
     for (final marker in scene.transitionMarkers) {
-      // withAlpha instead of withValues: keeps the floor at Flutter >=3.22.
+      // withAlpha rather than withValues — integer alpha is exact here, and
+      // there is no precision to gain from the floating-point variant.
+      // (This used to claim it held a >=3.22 SDK floor; that floor was
+      // already broken elsewhere and pubspec.yaml now declares >=3.32.)
       canvas.drawCircle(
           marker.at, 10, Paint()..color = style.route.withAlpha(64),);
       canvas.drawCircle(marker.at, 7, Paint()..color = style.route);

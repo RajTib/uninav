@@ -55,17 +55,21 @@ gantt
 
 | Floor | Plan image | Traced source | In bundle |
 |---|---|---|---|
-| 8 | ✅ `8th floor.png` | ✅ `floor_8.json` | ✅ |
+| 8 | ✅ `8th floor.png` | ✅ `floor_8.json` | ⚠️ see below |
 | 7 | ❌ | ❌ empty file | ❌ |
-| 6 | ✅ `6th floor.png` | ✅ `floor_6.json` | ✅ |
-| 5 | ✅ `5th floor.png` | ❌ empty file | ❌ |
-| 4 | ❌ | ❌ empty file | ❌ |
-| 3 | ❌ | ❌ empty file | ❌ |
-| 2 | ❌ | ❌ empty file | ❌ |
-| 1 | ❌ | ❌ empty file | ❌ |
+| 6 | ✅ `6th floor.png` | ✅ `floor_6.json` | ⚠️ see below |
+| 5 | ✅ `5th floor.png` | ✅ `floor_5.json` | ❌ traced, never bundled |
+| 4 | ✅ `4th floor.jpeg` | ❌ empty file | ❌ |
+| 3 | ✅ `3rd floor.jpeg` | ❌ empty file | ❌ |
+| 2 | ✅ `2nd floor.jpeg` | ❌ empty file | ❌ |
+| 1 | ✅ `1st floor.jpeg` | ❌ empty file | ❌ |
 | Ground | ❌ | ❌ empty file | ❌ |
 
-Target order — **5, 4, 3, 2, 1, Ground** — deliberately works downward toward the entrance. Floor 5 already has its plan image, so it is the cheapest next step; and the Ground Floor is where the building's `entrance` node must eventually live, which the bundle currently lacks entirely.
+> ⚠️ **`bundle_SJT.json` is currently empty** — a regeneration run with no input files overwrote it. Traced sources are intact; the tool has been fixed to refuse this. Regenerate before anything else: [15-known-issues.md §0](15-known-issues.md).
+
+**Image acquisition is no longer the bottleneck — tracing is.** Seven of nine floors now have a plan image; only the Ground Floor and floor 7 lack one.
+
+Target order — **5, 4, 3, 2, 1, Ground** — works downward toward the entrance. Floor 5 is already traced and only needs bundling. The Ground Floor matters disproportionately: it is where the building's `entrance` node must live, and the bundle has never had one.
 
 Workflow per floor is in [16-mapping-guide.md](16-mapping-guide.md): trace in the browser tool, export `floor_N.json`, regenerate the bundle, open the app, walk a route you know.
 
@@ -79,7 +83,9 @@ Workflow per floor is in [16-mapping-guide.md](16-mapping-guide.md): trace in th
 
 ### 1.2 Finalise graph generation
 
+- **Regenerate `bundle_SJT.json` from floors 5, 6 and 8 in one command** — it is currently empty ([15 §0](15-known-issues.md)). Do this first; nothing else can be demonstrated until it is done.
 - **Run `NavGraph` validation inside `floorplan_to_bundle`.** The `.survey` generator does this and refuses to write a broken bundle; the tracer generator — the one actually in use — does not. The stricter check is on the unused pipeline. Fix that. ([15-known-issues.md](15-known-issues.md))
+- **Get `flutter analyze` to zero and keep CI green.** It has never passed ([15 §2.5](15-known-issues.md)).
 - **Add a reachability check.** Every room must be reachable from an entrance, mirroring `survey_to_bundle`.
 - **Add an `entrance` node to the Ground Floor** and use it as the default route origin.
 - **Remove the third copy of `assumedFloorHeightM`.** It is currently a literal inside `floorplan_to_bundle.dart`, defeating the single-source-of-truth fix already applied to the app.
